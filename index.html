@@ -16,7 +16,13 @@ body[data-co=bae]{--ac:#2f5fe8;--on:#fff}
 body[data-co=kpmg]{--ac:#00338d;--on:#fff}
 body[data-co=deloitte]{--ac:#86bc25;--on:#14161a}
 [hidden]{display:none!important}
-.chip.au{display:inline-flex;align-items:center;gap:6px;position:relative;isolation:isolate;background:transparent;padding:5px 16px;margin:5px;color:#14161a;border-radius:999px;overflow:visible}
+.chip.au .s,.chip.au .x{display:inline-block;overflow:hidden;white-space:nowrap;transition:max-width .6s ease,opacity .5s ease}
+.chip.au .s{max-width:120px}
+.chip.au .x{max-width:0;opacity:0}
+.chip.au.ex .s{max-width:0;opacity:0}
+.chip.au.ex .x{max-width:280px;opacity:1}
+.chip.au i{margin-right:6px}
+.chip.au{display:inline-flex;align-items:center;gap:0;position:relative;isolation:isolate;background:transparent;padding:5px 16px;margin:5px;color:#14161a;border-radius:999px;overflow:visible}
 .chip.au::before{content:"";position:absolute;inset:-4px;border-radius:999px;z-index:-2;background:linear-gradient(90deg,#3b82f6,#22c55e,#facc15,#ec4899,#3b82f6);background-size:300% 100%;filter:blur(9px);opacity:1;animation:aug 3s ease-in-out infinite}
 .chip.au::after{content:"";position:absolute;inset:0;border-radius:999px;z-index:-1;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
 @keyframes aug{0%{background-position:0% 50%;opacity:.6;transform:scale(1)}50%{background-position:100% 50%;opacity:1;transform:scale(1.12)}100%{background-position:200% 50%;opacity:.6;transform:scale(1)}}.au i{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pu 2s infinite}@keyframes pu{50%{opacity:.35}}
@@ -121,7 +127,7 @@ dialog{border:1px solid var(--ln);border-radius:20px;background:var(--sf);color:
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-<header class="top"><div class="brand"><i class="mark"></i><b>JobVue</b></div><nav class="nav" aria-label="Main"><button data-v="home" class="on">Home</button><button data-v="dash">Dashboard</button></nav><span class="chip au" id="au" hidden><i></i><span></span></span><span class="chip" id="ig" hidden></span><span class="chip" id="dv"></span></header>
+<header class="top"><div class="brand"><i class="mark"></i><b>JobVue</b></div><nav class="nav" aria-label="Main"><button data-v="home" class="on">Home</button><button data-v="dash">Dashboard</button></nav><span class="chip au" id="au" hidden><i></i><span class="s"></span><span class="x"></span></span><span class="chip" id="ig" hidden></span><span class="chip" id="dv"></span></header>
 <main id="app"></main>
 <dialog id="dlg"><p></p><div class="row" style="justify-content:flex-end;margin-top:14px"><button class="btn ghost"></button><button class="btn"></button></div></dialog>
 <footer class="disc">This is a practice site only. Nothing here is the real test, and it does not predict any employer's decision. It exists to help you build confidence.</footer>
@@ -783,13 +789,14 @@ async function rpc(fn,body){const r=await fetch(SUPA.url.replace(/\/$/,'')+'/res
 /* Live count: every open tab sends a 'ping' about once a minute; the active_users() SQL function (see live-users.sql) counts distinct visitors seen in the last few minutes. */
 let liveN=null;
 const liveTxt=n=>{n=Math.max(1,n);return n+(n===1?' person':' people')+' practising now'};
-function paintLive(){if(liveN==null)return;const e=$('#au');if(e){e.hidden=false;e.lastChild.textContent=Math.max(1,liveN)+' live';e.title=liveTxt(liveN)}$$('.lv').forEach(x=>{x.hidden=false;x.lastChild.textContent=liveTxt(liveN)})}
+function paintLive(){if(liveN==null)return;const e=$('#au');if(e){e.hidden=false;e.querySelector('.s').textContent=Math.max(1,liveN)+' live';e.querySelector('.x').textContent=liveTxt(liveN);e.title=liveTxt(liveN)}}
+function expandLive(){const e=$('#au');if(!e||e.hidden)return;e.classList.add('ex');setTimeout(()=>e.classList.remove('ex'),3500)}
 function ping(){if(document.hidden||!SUPA.url||!SUPA.key)return;try{fetch(SUPA.url.replace(/\/$/,'')+'/rest/v1/presence?on_conflict=vid',{method:'POST',keepalive:true,headers:{apikey:SUPA.key,Authorization:'Bearer '+SUPA.key,'Content-Type':'application/json',Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({vid:vid()})}).catch(()=>{})}catch(e){}}
 async function fetchLive(){if(document.hidden||!SUPA.url||!SUPA.key)return;try{const n=await rpc('live_users',{secs:10});if(typeof n==='number'){liveN=n;paintLive()}}catch(e){}}
 function pulse(){ping();fetchLive()}
 function signup(){alive++;cleanup();releaseCam();busy=false;document.body.removeAttribute('data-co');document.body.dataset.mood='';
  $$('.nav button').forEach(b=>b.classList.remove('on'));
- const form=(err,v={})=>{app.innerHTML=`<section class="stack"><div><h1>Welcome to JobVue</h1><p class="mut">Tell us a little about you to get started.</p><span class="chip au lv" hidden><i></i><span></span></span></div>
+ const form=(err,v={})=>{app.innerHTML=`<section class="stack"><div><h1>Welcome to JobVue</h1><p class="mut">Tell us a little about you to get started.</p></div>
  <div class="card tint"><b>This is a practice site only</b><p class="sm" style="margin:6px 0 0">Nothing here is the real test. The questions, tests, games and scores are original practice material, not an employer's assessment, and they do not predict any employer's decision. JobVue exists only to help you build confidence and get comfortable before the real thing.</p></div>
  <form class="card stack" id="sf" novalidate><label class="fld">Name<input id="sn" autocomplete="name" maxlength="60" required value="${esc(v.name||'')}"></label><label class="fld">Age<input id="sa" type="number" inputmode="numeric" min="13" max="100" required value="${esc(v.age||'')}"></label><label class="fld">Email <span class="mut sm">(optional)</span><input id="se" type="email" autocomplete="email" inputmode="email" maxlength="120" value="${esc(v.email||'')}"></label>
  <label class="cons"><input type="checkbox" id="sh" ${v.share?'checked':''}><span class="sm"><b>Share my practice answers</b> <span class="mut">(optional). Tick this to let JobVue keep a copy of your written answers, transcripts, test choices and scores so we can see how people practise and improve the site. Your video and audio are never uploaded or saved. You can switch this off any time under Dashboard, History.</span></span></label>
@@ -917,7 +924,7 @@ function crq(){if(CRP)return CRP;const out=[],seen=new Set();
 function home(){const greet=(h=>h<12?'Good morning':h<18?'Good afternoon':'Good evening')(new Date().getHours());
  const langs=[['en-NG','English (Nigeria)'],['en-GB','English (UK)'],['en-US','English (US)'],['en-ZA','English (South Africa)'],['en-IN','English (India)'],['en-AU','English (Australia)']];
  const n=D.ans.length+D.vjt.length+D.games.length+D.tests.length;
- app.innerHTML=`<section class="stack"><div><p class="mut">${greet}${D.user.name?', '+esc(D.user.name.split(' ')[0]):''} <span class="chip au lv" hidden><i></i><span></span></span></p><h1>Practise like it's real.</h1><p class="mut">Pick an employer. Each stage mirrors the real format: camera on, timer running, feedback straight after.</p></div>
+ app.innerHTML=`<section class="stack"><div><p class="mut">${greet}${D.user.name?', '+esc(D.user.name.split(' ')[0]):''}</p><h1>Practise like it's real.</h1><p class="mut">Pick an employer. Each stage mirrors the real format: camera on, timer running, feedback straight after.</p></div>
  <div class="grid c2">${Object.keys(CO).map(k=>{const c=CO[k],d=c.stages.filter(s=>stageDone(k,s[0])).length;return`<button class="co" data-c="${k}" style="--cc:${c.c};--ct:${c.on}"><span class="dot"></span><b>${c.name}</b><span>${c.role}</span><small class="mut">${d} of ${c.stages.length} stages practised</small><i class="go">→</i></button>`}).join('')}</div>
  <div class="card row sp"><div><b>Speech language</b><div class="mut sm">Used for live transcription of your answers</div></div><select id="lang" aria-label="Speech language">${langs.map(l=>`<option value="${l[0]}" ${D.set.lang===l[0]?'selected':''}>${l[1]}</option>`).join('')}</select></div>
  <div class="card"><b>Your device</b><div class="mut sm">${dev.type==='phone'?'Phone detected: touch-sized controls, front camera, and your screen stays awake while you practise.':dev.type==='tablet'?'Tablet detected: touch controls with a wider layout. Rest it on a stand if you can.':'Laptop or desktop detected: wide video, plus keyboard shortcuts (Space to respond, 1 to 4 to choose, Enter to continue).'}</div></div>
@@ -1181,7 +1188,7 @@ $$('.nav button').forEach(b=>b.onclick=()=>go(b.dataset.v));
 detect();try{if(!sessionStorage.getItem('jv_v')){sessionStorage.setItem('jv_v','1');track('visit')}}catch(e){track('visit')}
 addEventListener('resize',detect);addEventListener('orientationchange',detect);
 if(D.user&&!D.user.id){D.user.id=uid();save()}
-show('home');pulse();setInterval(ping,3000);setInterval(fetchLive,3000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)pulse()});
+show('home');pulse();setInterval(ping,3000);setInterval(fetchLive,3000);setInterval(expandLive,9000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)pulse()});
 </script>
 </body>
 </html>
