@@ -790,7 +790,10 @@ async function rpc(fn,body){const r=await fetch(SUPA.url.replace(/\/$/,'')+'/res
 let liveN=null;
 const liveTxt=n=>{n=Math.max(1,n);return n+(n===1?' person':' people')+' practising now'};
 function paintLive(){if(liveN==null)return;const e=$('#au');if(e){e.hidden=false;e.querySelector('.s').textContent=Math.max(1,liveN)+' live';e.querySelector('.x').textContent=liveTxt(liveN);e.title=liveTxt(liveN)}}
-function expandLive(){const e=$('#au');if(!e||e.hidden)return;e.classList.add('ex');setTimeout(()=>e.classList.remove('ex'),3500)}
+let liveHov=false,liveExT=null;
+function expandLive(){const e=$('#au');if(!e||e.hidden||liveHov)return;e.classList.add('ex');clearTimeout(liveExT);liveExT=setTimeout(()=>{if(!liveHov)e.classList.remove('ex')},R(2500,4500))}
+function schedLive(){setTimeout(()=>{expandLive();schedLive()},R(5000,15000))}
+(function(){const e=$('#au');if(!e)return;e.addEventListener('mouseenter',()=>{liveHov=true;clearTimeout(liveExT);e.classList.add('ex')});e.addEventListener('mouseleave',()=>{liveHov=false;e.classList.remove('ex')});e.addEventListener('click',()=>{if(!liveHov)expandLive()})})();
 function ping(){if(document.hidden||!SUPA.url||!SUPA.key)return;try{fetch(SUPA.url.replace(/\/$/,'')+'/rest/v1/presence?on_conflict=vid',{method:'POST',keepalive:true,headers:{apikey:SUPA.key,Authorization:'Bearer '+SUPA.key,'Content-Type':'application/json',Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({vid:vid()})}).catch(()=>{})}catch(e){}}
 async function fetchLive(){if(document.hidden||!SUPA.url||!SUPA.key)return;try{const n=await rpc('live_users',{secs:10});if(typeof n==='number'){liveN=n;paintLive()}}catch(e){}}
 function pulse(){ping();fetchLive()}
@@ -1188,7 +1191,7 @@ $$('.nav button').forEach(b=>b.onclick=()=>go(b.dataset.v));
 detect();try{if(!sessionStorage.getItem('jv_v')){sessionStorage.setItem('jv_v','1');track('visit')}}catch(e){track('visit')}
 addEventListener('resize',detect);addEventListener('orientationchange',detect);
 if(D.user&&!D.user.id){D.user.id=uid();save()}
-show('home');pulse();setInterval(ping,3000);setInterval(fetchLive,3000);setInterval(expandLive,9000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)pulse()});
+show('home');pulse();setInterval(ping,3000);setInterval(fetchLive,3000);schedLive();document.addEventListener('visibilitychange',()=>{if(!document.hidden)pulse()});
 </script>
 </body>
 </html>
