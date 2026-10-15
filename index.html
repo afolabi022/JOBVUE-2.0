@@ -16,7 +16,11 @@ body[data-co=bae]{--ac:#2f5fe8;--on:#fff}
 body[data-co=kpmg]{--ac:#00338d;--on:#fff}
 body[data-co=deloitte]{--ac:#86bc25;--on:#14161a}
 [hidden]{display:none!important}
-.au{display:inline-flex;align-items:center;gap:6px}.au i{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pu 2s infinite}@keyframes pu{50%{opacity:.35}}
+.au{display:inline-flex;align-items:center;gap:6px;position:relative;isolation:isolate;background:transparent;padding:4px 14px;margin:3px}
+.au::before{content:"";position:absolute;inset:-3px;border-radius:inherit;z-index:-2;background:linear-gradient(90deg,#3b82f6,#22c55e,#facc15,#ec4899,#3b82f6);background-size:300% 100%;filter:blur(7px);opacity:.9;animation:aug 3s ease-in-out infinite}
+.au::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+@media(prefers-color-scheme:dark){.au{color:#14161a}}
+@keyframes aug{0%{background-position:0% 50%;opacity:.55;transform:scale(1)}50%{background-position:100% 50%;opacity:1;transform:scale(1.1)}100%{background-position:200% 50%;opacity:.55;transform:scale(1)}}.au i{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pu 2s infinite}@keyframes pu{50%{opacity:.35}}
 .pq{border:1px solid var(--ln);border-radius:14px;padding:14px 16px;background:var(--sf)}.pq summary{cursor:pointer;font-weight:500}.pq .o{margin:8px 0;padding-left:18px}
 @media(prefers-color-scheme:dark){body[data-co=bae]{--ac:#5b84ff;--on:#0e0f12}body[data-co=kpmg]{--ac:#6b9bff;--on:#0e0f12}}
 body[data-mood=good]{--ac:var(--ok);--on:var(--on-ok)}
@@ -779,10 +783,11 @@ const uid=()=>'JV-'+vid().replace(/-/g,'').slice(0,8).toUpperCase();
 async function rpc(fn,body){const r=await fetch(SUPA.url.replace(/\/$/,'')+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:SUPA.key,Authorization:'Bearer '+SUPA.key,'Content-Type':'application/json'},body:JSON.stringify(body)});if(!r.ok)throw 0;return r.json()}
 /* Live count: every open tab sends a 'ping' about once a minute; the active_users() SQL function (see live-users.sql) counts distinct visitors seen in the last few minutes. */
 let liveN=null;
-const TESTLIVE=/[?&]testlive\b/.test(location.search); /* testing only: add ?testlive to the URL to add a random 15-25 to the count, labelled "(test)" */
-const liveTxt=n=>{n=Math.max(1,n);return n+(n===1?' person':' people')+' practising now'+(TESTLIVE?' (test)':'')};
-function paintLive(){if(liveN==null)return;const e=$('#au');if(e){e.hidden=false;e.lastChild.textContent=Math.max(1,liveN)+' live'+(TESTLIVE?' (test)':'');e.title=liveTxt(liveN)}$$('.lv').forEach(x=>{x.hidden=false;x.lastChild.textContent=liveTxt(liveN)})}
-async function pulse(){if(document.hidden)return;if(SUPA.url&&SUPA.key)track('ping');try{const n=await rpc('active_users',{mins:5});if(typeof n==='number'){liveN=n+(TESTLIVE?R(15,25):0);paintLive()}}catch(e){if(TESTLIVE){liveN=R(15,25);paintLive()}}}
+const liveTxt=n=>{n=Math.max(1,n);return n+(n===1?' person':' people')+' practising now'};
+function paintLive(){if(liveN==null)return;const e=$('#au');if(e){e.hidden=false;e.lastChild.textContent=Math.max(1,liveN)+' live';e.title=liveTxt(liveN)}$$('.lv').forEach(x=>{x.hidden=false;x.lastChild.textContent=liveTxt(liveN)})}
+function ping(){if(document.hidden||!SUPA.url||!SUPA.key)return;try{fetch(SUPA.url.replace(/\/$/,'')+'/rest/v1/presence?on_conflict=vid',{method:'POST',keepalive:true,headers:{apikey:SUPA.key,Authorization:'Bearer '+SUPA.key,'Content-Type':'application/json',Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({vid:vid()})}).catch(()=>{})}catch(e){}}
+async function fetchLive(){if(document.hidden||!SUPA.url||!SUPA.key)return;try{const n=await rpc('live_users',{secs:10});if(typeof n==='number'){liveN=n;paintLive()}}catch(e){}}
+function pulse(){ping();fetchLive()}
 function signup(){alive++;cleanup();releaseCam();busy=false;document.body.removeAttribute('data-co');document.body.dataset.mood='';
  $$('.nav button').forEach(b=>b.classList.remove('on'));
  const form=(err,v={})=>{app.innerHTML=`<section class="stack"><div><h1>Welcome to JobVue</h1><p class="mut">Tell us a little about you to get started.</p><span class="chip au lv" hidden><i></i><span></span></span></div>
@@ -913,7 +918,7 @@ function crq(){if(CRP)return CRP;const out=[],seen=new Set();
 function home(){const greet=(h=>h<12?'Good morning':h<18?'Good afternoon':'Good evening')(new Date().getHours());
  const langs=[['en-NG','English (Nigeria)'],['en-GB','English (UK)'],['en-US','English (US)'],['en-ZA','English (South Africa)'],['en-IN','English (India)'],['en-AU','English (Australia)']];
  const n=D.ans.length+D.vjt.length+D.games.length+D.tests.length;
- app.innerHTML=`<section class="stack"><div><p class="mut">${greet}${D.user.name?', '+esc(D.user.name.split(' ')[0]):''} <span class="chip" title="Your unique JobVue ID">${esc(D.user.id||uid())}</span> <span class="chip au lv" hidden><i></i><span></span></span></p><h1>Practise like it's real.</h1><p class="mut">Pick an employer. Each stage mirrors the real format: camera on, timer running, feedback straight after.</p></div>
+ app.innerHTML=`<section class="stack"><div><p class="mut">${greet}${D.user.name?', '+esc(D.user.name.split(' ')[0]):''} <span class="chip au lv" hidden><i></i><span></span></span></p><h1>Practise like it's real.</h1><p class="mut">Pick an employer. Each stage mirrors the real format: camera on, timer running, feedback straight after.</p></div>
  <div class="grid c2">${Object.keys(CO).map(k=>{const c=CO[k],d=c.stages.filter(s=>stageDone(k,s[0])).length;return`<button class="co" data-c="${k}" style="--cc:${c.c};--ct:${c.on}"><span class="dot"></span><b>${c.name}</b><span>${c.role}</span><small class="mut">${d} of ${c.stages.length} stages practised</small><i class="go">→</i></button>`}).join('')}</div>
  <div class="card row sp"><div><b>Speech language</b><div class="mut sm">Used for live transcription of your answers</div></div><select id="lang" aria-label="Speech language">${langs.map(l=>`<option value="${l[0]}" ${D.set.lang===l[0]?'selected':''}>${l[1]}</option>`).join('')}</select></div>
  <div class="card"><b>Your device</b><div class="mut sm">${dev.type==='phone'?'Phone detected: touch-sized controls, front camera, and your screen stays awake while you practise.':dev.type==='tablet'?'Tablet detected: touch controls with a wider layout. Rest it on a stand if you can.':'Laptop or desktop detected: wide video, plus keyboard shortcuts (Space to respond, 1 to 4 to choose, Enter to continue).'}</div></div>
@@ -1177,7 +1182,7 @@ $$('.nav button').forEach(b=>b.onclick=()=>go(b.dataset.v));
 detect();try{if(!sessionStorage.getItem('jv_v')){sessionStorage.setItem('jv_v','1');track('visit')}}catch(e){track('visit')}
 addEventListener('resize',detect);addEventListener('orientationchange',detect);
 if(D.user&&!D.user.id){D.user.id=uid();save()}
-show('home');pulse();setInterval(pulse,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)pulse()});
+show('home');pulse();setInterval(ping,3000);setInterval(fetchLive,3000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)pulse()});
 </script>
 </body>
 </html>
