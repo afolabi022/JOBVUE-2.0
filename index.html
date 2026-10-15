@@ -785,7 +785,7 @@ function track(event,extra){if(!SUPA.url||!SUPA.key)return;
 function report(kind,payload){const u=D.user;if(!u||!u.share||!SUPA.url||!SUPA.key)return;
  try{fetch(SUPA.url.replace(/\/$/,'')+'/rest/v1/responses',{method:'POST',keepalive:true,headers:{apikey:SUPA.key,Authorization:'Bearer '+SUPA.key,'Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify({vid:vid(),kind,name:u.name,payload})}).catch(()=>{})}catch(e){}}
 const uid=()=>'JV-'+vid().replace(/-/g,'').slice(0,8).toUpperCase();
-async function rpc(fn,body){const r=await fetch(SUPA.url.replace(/\/$/,'')+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:SUPA.key,Authorization:'Bearer '+SUPA.key,'Content-Type':'application/json'},body:JSON.stringify(body)});if(!r.ok)throw 0;return r.json()}
+async function rpc(fn,body){const r=await fetch(SUPA.url.replace(/\/$/,'')+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:SUPA.key,Authorization:'Bearer '+SUPA.key,'Content-Type':'application/json'},body:JSON.stringify(body)});if(!r.ok){const er=new Error(await r.text().catch(()=>''));er.status=r.status;throw er}return r.json()}
 /* Live count: every open tab sends a 'ping' about once a minute; the active_users() SQL function (see live-users.sql) counts distinct visitors seen in the last few minutes. */
 let liveN=null;
 const liveTxt=n=>{n=Math.max(1,n);return n+(n===1?' person':' people')+' practising now'};
@@ -794,8 +794,11 @@ let liveHov=false,liveExT=null;
 function expandLive(){const e=$('#au');if(!e||e.hidden||liveHov)return;e.classList.add('ex');clearTimeout(liveExT);liveExT=setTimeout(()=>{if(!liveHov)e.classList.remove('ex')},R(2500,4500))}
 function schedLive(){setTimeout(()=>{expandLive();schedLive()},R(5000,15000))}
 (function(){const e=$('#au');if(!e)return;e.addEventListener('mouseenter',()=>{liveHov=true;clearTimeout(liveExT);e.classList.add('ex')});e.addEventListener('mouseleave',()=>{liveHov=false;e.classList.remove('ex')});e.addEventListener('click',()=>{if(!liveHov)expandLive()})})();
-function ping(){if(document.hidden||!SUPA.url||!SUPA.key)return;try{fetch(SUPA.url.replace(/\/$/,'')+'/rest/v1/presence?on_conflict=vid',{method:'POST',keepalive:true,headers:{apikey:SUPA.key,Authorization:'Bearer '+SUPA.key,'Content-Type':'application/json',Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({vid:vid()})}).catch(()=>{})}catch(e){}}
-async function fetchLive(){if(document.hidden||!SUPA.url||!SUPA.key)return;try{const n=await rpc('live_users',{secs:10});if(typeof n==='number'){liveN=n;paintLive()}}catch(e){}}
+const DBG=/[?&#]debug\b/.test(location.href);
+function dbg(k,v){if(!DBG)return;let b=document.getElementById('dbg');if(!b){b=document.createElement('pre');b.id='dbg';b.style.cssText='position:fixed;left:8px;bottom:8px;z-index:99;background:#000;color:#0f0;padding:8px;font:11px monospace;max-width:92vw;white-space:pre-wrap;margin:0;border-radius:8px';document.body.appendChild(b)}b.dataset[k]=v;b.textContent=Object.entries(b.dataset).map(([a,c])=>a+': '+c).join('\n')}
+if(DBG)addEventListener('error',e=>dbg('js_error',String(e.message)+' line '+e.lineno));
+function ping(){if(document.hidden||!SUPA.url||!SUPA.key){dbg('ping','skipped hidden='+document.hidden);return}try{rpc('touch_presence',{v:vid()}).then(()=>dbg('ping','ok '+new Date().toLocaleTimeString())).catch(e=>dbg('ping','FAIL '+(e.status||'')+' '+(e.message||e)))}catch(e){dbg('ping','THROW '+e)}}
+async function fetchLive(){if(document.hidden||!SUPA.url||!SUPA.key)return;try{const n=await rpc('live_users',{secs:10});dbg('live','ok count='+n);if(typeof n==='number'){liveN=n;paintLive()}}catch(e){dbg('live','FAIL '+(e.status||'')+' '+(e.message||e))}}
 function pulse(){ping();fetchLive()}
 function signup(){alive++;cleanup();releaseCam();busy=false;document.body.removeAttribute('data-co');document.body.dataset.mood='';
  $$('.nav button').forEach(b=>b.classList.remove('on'));
