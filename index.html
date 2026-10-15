@@ -16,11 +16,10 @@ body[data-co=bae]{--ac:#2f5fe8;--on:#fff}
 body[data-co=kpmg]{--ac:#00338d;--on:#fff}
 body[data-co=deloitte]{--ac:#86bc25;--on:#14161a}
 [hidden]{display:none!important}
-.au{display:inline-flex;align-items:center;gap:6px;position:relative;isolation:isolate;background:transparent;padding:4px 14px;margin:3px}
-.au::before{content:"";position:absolute;inset:-3px;border-radius:inherit;z-index:-2;background:linear-gradient(90deg,#3b82f6,#22c55e,#facc15,#ec4899,#3b82f6);background-size:300% 100%;filter:blur(7px);opacity:.9;animation:aug 3s ease-in-out infinite}
-.au::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
-@media(prefers-color-scheme:dark){.au{color:#14161a}}
-@keyframes aug{0%{background-position:0% 50%;opacity:.55;transform:scale(1)}50%{background-position:100% 50%;opacity:1;transform:scale(1.1)}100%{background-position:200% 50%;opacity:.55;transform:scale(1)}}.au i{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pu 2s infinite}@keyframes pu{50%{opacity:.35}}
+.chip.au{display:inline-flex;align-items:center;gap:6px;position:relative;isolation:isolate;background:transparent;padding:5px 16px;margin:5px;color:#14161a;border-radius:999px;overflow:visible}
+.chip.au::before{content:"";position:absolute;inset:-4px;border-radius:999px;z-index:-2;background:linear-gradient(90deg,#3b82f6,#22c55e,#facc15,#ec4899,#3b82f6);background-size:300% 100%;filter:blur(9px);opacity:1;animation:aug 3s ease-in-out infinite}
+.chip.au::after{content:"";position:absolute;inset:0;border-radius:999px;z-index:-1;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+@keyframes aug{0%{background-position:0% 50%;opacity:.6;transform:scale(1)}50%{background-position:100% 50%;opacity:1;transform:scale(1.12)}100%{background-position:200% 50%;opacity:.6;transform:scale(1)}}.au i{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pu 2s infinite}@keyframes pu{50%{opacity:.35}}
 .pq{border:1px solid var(--ln);border-radius:14px;padding:14px 16px;background:var(--sf)}.pq summary{cursor:pointer;font-weight:500}.pq .o{margin:8px 0;padding-left:18px}
 @media(prefers-color-scheme:dark){body[data-co=bae]{--ac:#5b84ff;--on:#0e0f12}body[data-co=kpmg]{--ac:#6b9bff;--on:#0e0f12}}
 body[data-mood=good]{--ac:var(--ok);--on:var(--on-ok)}
