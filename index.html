@@ -16,6 +16,47 @@ body[data-co=bae]{--ac:#2f5fe8;--on:#fff}
 body[data-co=kpmg]{--ac:#00338d;--on:#fff}
 body[data-co=deloitte]{--ac:#86bc25;--on:#14161a}
 body[data-co=bp]{--ac:#2e9a3c;--on:#fff}
+
+.bpg{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:16px;background:radial-gradient(circle at 50% 30%,rgba(46,154,60,.28),rgba(6,22,10,.72));-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);animation:bpf .25s ease}
+.bpg.out{opacity:0;transition:opacity .22s}
+.bpg .bx{position:relative;overflow:hidden;width:min(94vw,400px);text-align:center;background:var(--sf);border:1px solid color-mix(in srgb,#2e9a3c 45%,var(--ln));border-radius:28px;padding:30px 20px 20px;box-shadow:0 28px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.04) inset;animation:bpp .55s cubic-bezier(.2,1.25,.3,1)}
+.bpg .bx::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#1f7a2c,#4cc15a,#e4f26a,#4cc15a,#1f7a2c);background-size:300% 100%;animation:bpg 3s linear infinite}
+.bpg .bx::after{content:"";position:absolute;width:260px;height:260px;left:50%;top:-110px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(76,193,90,.22),transparent 65%);pointer-events:none}
+.bpm{position:relative;display:inline-grid;place-items:center;width:112px;height:100px;z-index:1}
+.bpm .rg{position:absolute;width:84px;height:84px;border-radius:24px;background:color-mix(in srgb,#2e9a3c 28%,transparent);animation:bpr 2.4s ease-out infinite}
+.bpt{position:relative;display:grid;place-items:center;width:84px;height:84px;border-radius:24px;background:linear-gradient(145deg,#176d27,#3fb24f 60%,#8fd44a);box-shadow:0 10px 26px rgba(31,122,44,.45),inset 0 2px 0 rgba(255,255,255,.35);color:#fff;font:800 2rem/1 var(--font);letter-spacing:-.04em;animation:bpl 3s ease-in-out infinite}
+.bpt::after{content:"";position:absolute;inset:0;border-radius:24px;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.4) 50%,transparent 65%);background-size:250% 100%;animation:bpsn 3.5s ease-in-out infinite}
+.bpm .pl{position:absolute;right:0;bottom:0;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--sf);color:#2e9a3c;box-shadow:0 4px 14px rgba(0,0,0,.3);border:2px solid color-mix(in srgb,#2e9a3c 55%,var(--sf));transition:color .3s,transform .4s cubic-bezier(.3,1.5,.5,1),background .3s}
+.bpg .sh{transition:transform .45s cubic-bezier(.3,1.5,.5,1);transform-box:fill-box;transform-origin:right bottom}
+.bpg .bt2{display:block;font-weight:600;font-size:1.25rem;margin-top:8px;position:relative;z-index:1}
+.bpg .sub{position:relative;z-index:1;margin:4px 0 16px}
+.bpc{position:relative;display:flex;justify-content:center;align-items:center;gap:5px;margin:2px 0 10px;z-index:1;cursor:text}
+.bpc .c{width:27px;height:40px;display:grid;place-items:center;border-radius:10px;border:1.5px solid var(--ln);background:var(--bg);font:700 1.15rem var(--font);color:var(--ink);transition:border-color .2s,background .2s,transform .2s,box-shadow .2s}
+.bpc .c.f{border-color:#2e9a3c;background:color-mix(in srgb,#2e9a3c 12%,var(--bg));animation:bpk .22s cubic-bezier(.3,1.6,.5,1)}
+.bpc.fc .c.cur{border-color:#2e9a3c;box-shadow:0 0 0 3px color-mix(in srgb,#2e9a3c 25%,transparent);transform:translateY(-2px)}
+.bpc.fc .c.cur::after{content:"";width:2px;height:18px;border-radius:1px;background:#2e9a3c;animation:bpb 1s steps(1) infinite}
+.bpc .d{width:8px;height:2px;border-radius:1px;background:var(--ln)}
+.bpc input{position:absolute;inset:0;width:100%;height:100%;opacity:0;font-size:16px;cursor:text;border:0;background:none}
+.bpg .pg{position:relative;z-index:1;height:5px;border-radius:3px;background:var(--ln);overflow:hidden;margin:0 6px 4px}.bpg .pg i{display:block;height:100%;width:0;background:linear-gradient(90deg,#2e9a3c,#a6df4a);border-radius:3px;transition:width .25s}
+.bpg .er{position:relative;z-index:1;color:var(--bad);min-height:1.5em;margin:6px 0 4px}
+.bpg .ac{position:relative;z-index:1;justify-content:center;gap:8px}
+.bpg .eye{position:relative;z-index:1;margin:6px auto 0;display:inline-flex;gap:6px;align-items:center;background:none;border:0;color:var(--mut,inherit);font:inherit;font-size:.82rem;cursor:pointer;opacity:.8}
+.bpg.no .bx{animation:bps .45s}.bpg.no .bpc .c{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,var(--bg))}.bpg.no .bpm .pl{color:var(--bad)}
+.bpg.ok .bpm .pl{color:#fff;background:#2e9a3c;border-color:#2e9a3c;transform:scale(1.18) rotate(-8deg)}.bpg.ok .sh{transform:translateY(-7px) rotate(-18deg)}
+.bpg.ok .bpt{animation:bpl .6s ease-in-out}.bpg.ok .bpc .c{border-color:#2e9a3c;background:color-mix(in srgb,#2e9a3c 22%,var(--bg))}
+.bpg.ok .bx{animation:bpo .5s ease 1s forwards}
+.bpm s{position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:50%;background:var(--pc);opacity:0;pointer-events:none}.bpg.ok .bpm s{animation:bpx .9s ease-out forwards}
+@keyframes bpf{from{opacity:0}}@keyframes bpp{from{opacity:0;transform:translateY(26px) scale(.9)}}
+@keyframes bpg{to{background-position:300% 0}}@keyframes bpl{50%{transform:translateY(-5px)}}
+@keyframes bpr{0%{transform:scale(.8);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+@keyframes bps{15%{transform:translateX(-14px)}35%{transform:translateX(11px)}55%{transform:translateX(-8px)}75%{transform:translateX(5px)}}
+@keyframes bpo{to{transform:scale(.94);opacity:0}}@keyframes bpk{from{transform:scale(.6)}}@keyframes bpb{50%{opacity:0}}
+@keyframes bpsn{0%,60%{background-position:150% 0}100%{background-position:-50% 0}}
+@keyframes bpx{0%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.3)}}
+.co .lkb{position:absolute;top:20px;right:56px;display:inline-flex;gap:5px;align-items:center;font-size:.72rem;font-weight:600;letter-spacing:.02em;padding:5px 10px 5px 8px;border-radius:999px;background:color-mix(in srgb,#2e9a3c 14%,transparent);color:#2e9a3c;transition:background .25s,color .25s}
+.co:hover .lkb,.co:focus-visible .lkb{background:rgba(255,255,255,.2);color:inherit}
+@media(prefers-reduced-motion:reduce){.bpg,.bpg *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+.rt{display:grid;grid-template-columns:repeat(var(--n,9),1fr);gap:4px;margin-top:10px}.rt button{min-height:44px;padding:0;border-radius:10px;border:1.5px solid var(--ln);background:var(--bg);color:var(--ink);font:600 1rem inherit;font-family:inherit;cursor:pointer}.rt button.on{background:var(--ac);color:var(--on);border-color:var(--ac)}.rt button:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
 @media(prefers-color-scheme:dark){body[data-co=bp]{--ac:#4cc15a;--on:#0e0f12}}
 [hidden]{display:none!important}
 .chip.au .s,.chip.au .x{display:inline-block;overflow:hidden;white-space:nowrap;transition:max-width .6s ease,opacity .5s ease}
@@ -170,11 +211,11 @@ kpmg:{name:'KPMG',role:'Graduate Trainee Programme',c:'#00338d',on:'#ffffff',ret
  kw:{Integrity:/\b(integrity|honest\w*|ethic\w*|the right thing|independen\w*|objectiv\w*|complian\w*|confidential\w*|escalat\w*|spoke up|refus\w*|declin\w*)\b/i,Excellence:/\b(excellen\w*|quality|learn(ed|t|ing)|improv\w*|double-?check\w*|review(ed)?|certif\w*|upskill\w*|high standard\w*|accura\w*)\b/i,Courage:/\b(courag\w*|challeng\w*|spoke up|speak up|pushed back|stepped (forward|up)|took the lead|difficult conversation|disagree\w*|volunteer\w*)\b/i,Together:/\b(together|team\w*|collaborat\w*|listen(ed|ing)?|support(ed)?|respect\w*|inclusi\w*|shared|colleague\w*|helped)\b/i,'For Better':/\b(community|impact|society|sustainab\w*|client\w*|better|benefit\w*|difference|purpose|volunteer\w*)\b/i},
  stages:[['kcur','Current affairs test','15 questions, 12 min'],['kreason','Numerical and logical reasoning','11 questions, 15 min'],['kquant','Quantitative problem solving','20 questions, 25 min'],['kverbal','Verbal reasoning','9 questions, 12 min'],['kcr','Passage reasoning','12 passage questions, 25 min'],['odvi','Video interview','30s prep, 2 min answers']],
  Q:[['Why KPMG, and why this graduate programme?','Motivation'],['Tell us about a time you analysed information to reach a recommendation.','Analysis'],['Describe a time you worked in a team to deliver something under pressure.','Teamwork'],['Tell us about a time you had the courage to challenge a decision or say something difficult.','Courage'],['Describe a time you noticed a mistake or something that did not feel right. What did you do?','Integrity'],['Tell us about a time you went beyond what was asked to deliver a better result.','Excellence'],['How do you keep up with business and economic news, and why does it matter in a client-facing firm?','Commercial awareness'],['Tell us about a time you used technology or data to work more efficiently.','Technology']]},
-bp:{name:'bp',role:'Early Careers · Saville assessments',c:'#2e9a3c',on:'#ffffff',retake:false,
- note:'Practice approximation of the Saville tests: item counts, timings and screens may differ from your invitation. Match 6.5 is a questionnaire about how you work, so it is not simulated here. Check your own assessment dashboard.',
+bp:{name:'BP',role:'Early Careers · Saville assessments',c:'#2e9a3c',on:'#ffffff',retake:false,
+ note:'Practice approximation of the Saville tests. Swift Global is one combined 12-minute timed test (recall, numbers, abstract); Match 6.5 rates statements in blocks of six on a 1 to 9 scale; the situational judgement test asks you to rate four actions per scenario. Item counts, timing splits, scales and screens are my best guesses because Saville does not publish them. The official Saville Swift Global practice test and your own assessment dashboard are the source of truth.',
  vals:[['Safety','Safety comes first. Stop and report risks.'],['Respect','Treat people fairly and listen.'],['Excellence','Do things well, own mistakes, keep learning.'],['Courage','Speak up and do the right thing when it is hard.'],['One Team','Share, help and work together.']],
  kw:{Safety:/\b(safety|safe|risk\w*|stopped)\b/i,Respect:/\b(respect\w*|listen\w*|inclusi\w*)\b/i,Excellence:/\b(excellen\w*|quality|learn\w*|improv\w*)\b/i,Courage:/\b(courag\w*|spoke up|speak up|challeng\w*)\b/i,'One Team':/\b(team\w*|together|support\w*|collaborat\w*)\b/i},
- stages:[['bnum','Swift Global: Numbers','12 number-series questions · 4 min'],['babs','Swift Global: Abstract','12 shape-pattern questions · 4 min'],['brec','Swift Global: Recall','Memorise symbols in a grid · 8 questions'],['bsjt','Situational judgement','8 workplace scenarios · 10 min']],
+ stages:[['bsg','Swift Global (one timed test)','Recall, numbers and abstract in one 12 min timer · speed counts'],['bm65','Match 6.5','6 blocks of 6 statements, each rated 1 to 9 · 6.5 min'],['bsjt','Situational judgement','8 scenarios, rate how effective 4 actions are · 10 min']],
  Q:[]}};
 
 /* flag key: [title, tip, severity] */
@@ -236,6 +277,7 @@ const GEN=[
 
 /* ---- KPMG practice content: all questions below are original and written for this app ---- */
 const naira=v=>'₦'+v.toLocaleString('en-NG');
+const bpLk=(o)=>`<svg viewBox="0 0 64 64" width="22" height="22" aria-hidden="true"><path class="sh" d="M20 28v-8a12 12 0 0 1 24 0v8" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"${o?' transform="translate(0,-7) rotate(-18 44 28)"':''}/><rect x="12" y="28" width="40" height="28" rx="8" fill="currentColor"/><circle cx="32" cy="41" r="4" fill="var(--sf)"/><rect x="30.5" y="43" width="3" height="7" rx="1.5" fill="var(--sf)"/></svg>`;
 const mq=r=>({t:r[6],q:r[0],ans:r[1],o:shf([r[1],r[2],r[3],r[4]]),why:r[5]});
 /* row: [question, correct, wrong, wrong, wrong, explanation, topic] */
 const CA=[
@@ -617,7 +659,7 @@ const GOOD=[...NEWG,...PSG,...KGEN].filter(g=>{for(let i=0;i<5;i++){try{if(okQ(g
 const GB=[];(function(){const seen=new Set();let i=0;for(let n=0;GB.length<200&&n<6000;n++){const g=GOOD[i++%GOOD.length];try{const x=g();if(okQ(x)){const key=x.q+'|'+x.ans;if(!seen.has(key)){seen.add(key);GB.push(x)}}}catch(e){}}})();
 const QPOOL=[...QB.map(r=>({t:r[4],q:r[0],o:r[1].slice(),ans:r[1][r[2]],why:r[3],tbl:r[5]&&r[5].tbl,svg:r[5]&&r[5].svg})),...GB];
 
-/* ---- bp / Saville Swift Global practice: numbers, abstract, SJT (recall is bRec) ---- */
+/* ---- bp / Saville Swift Global practice: numbers, abstract, recall, SJT ---- */
 const bpSeq=[
 ()=>{const s=R(1,5),m=R(2,3),c=R(1,4),a=[s];for(let i=0;i<5;i++)a.push(a[i]*m+c);return[a.slice(0,5),a[5],`Each term is the previous one ×${m} + ${c}.`]},
 ()=>{const d=R(1,4),k=R(1,3),a=[R(1,9)];let x=d;for(let i=0;i<5;i++){a.push(a[i]+x);x+=k}return[a.slice(0,5),a[5],`The gaps grow by ${k} each time (${d}, ${d+k}, ${d+2*k}…).`]},
@@ -632,20 +674,20 @@ const bpAbs=()=>{const dr=pick([45,90,-90,135]),dn=R(0,1),alt=R(0,1),n0=dn?1:R(1
  seq.forEach((p,i)=>svg+=bpFr(36+i*72,32,p.r,p.n,p.f));svg+=`<text x="324" y="40" text-anchor="middle" font-size="26" fill="currentColor">?</text>`;
  o.forEach((p,j)=>svg+=bpFr(54+j*84,104,p.r,p.n,p.f)+`<text x="${54+j*84}" y="152" text-anchor="middle" font-size="14" fill="currentColor">${L[j]}</text>`);
  return{t:'Abstract',q:'Which option (A to D) completes the series?',svg:svg+'</svg>',o:L.split(''),ans:L[o.indexOf(c)],why:`Each frame turns ${dr}°${alt?', the shading alternates':''}${dn?' and one dot is added':''}${!alt&&!dn?' while shading and dots stay the same':''}. The next frame follows the same steps.`}};
+/* ---- bp / Saville practice: Swift Global (one 12-min test), Match 6.5, rating-style SJT ---- */
 const BSJT=[
-['A colleague bypasses a safety interlock on shared equipment to finish faster.','Ask them to stop now, make the area safe and report it to the supervisor.','Raise it at the next team meeting.','Finish your own task and stay out of their way.','Do the same, since it saves everyone time.','Safety is never traded for speed. Act now, then report.','Safety'],
-['You spot a small leak near electrical equipment. Fixing it will delay a delivery.','Stop work in the area, make it safe if you can, report it and explain the delay to your manager.','Put a bucket under it and finish the delivery first.','Tell the next shift to deal with it.','Wait to see whether it gets worse.','A hazard near electrics comes before a deadline, and the delay is communicated openly.','Safety'],
-["A quieter teammate's idea is brushed aside by a senior colleague in a meeting.",'Ask the teammate to expand, point out what is useful, and check in with them afterwards.','Say nothing, to avoid conflict.',"Go straight to the senior colleague's manager.",'Tell the teammate to speak up more next time.','Respect means making space for the idea without escalating or blaming.','Respect'],
-['You find an error in a calculation in a report you sent to your manager yesterday.','Tell your manager now, send the corrected version and explain what changed.','Fix it in the shared file and say nothing.','Wait to see whether anyone notices.','Mention it only if someone asks.','Own mistakes early and visibly. Quiet fixes hide what happened.','Excellence'],
-['You think a risk in an agreed plan has not been raised. Your manager is confident in it.','Share the risk with evidence and suggest a way to test it.','Say nothing, since the decision is made.','Complain to colleagues afterwards.','Quietly do it your own way instead.','Courage means raising it constructively with evidence, not staying silent or going around people.','Courage'],
-['Another team is behind on a shared deliverable, which puts your deadline at risk.','Offer help, agree a joint plan with them and flag the risk to both managers.','Do your part and let them take the blame.','Take over their work without telling anyone.','Escalate to senior leaders before speaking to them.','One Team: talk to them first, share the load and keep managers informed.','One Team'],
-['A supplier offers you a gift above company limits while a contract decision is pending.','Decline politely, explain the policy and record it as required.','Accept it and share it with the team.','Accept it and declare it after the decision.','Keep it but be extra careful to stay fair.','Courage to do the right thing: decline and be transparent.','Courage'],
-['A new joiner is struggling with a system and you have your own workload.','Show them the basics now, agree a time to help properly and tell your manager if it affects your work.','Tell them to read the manual.','Do their tasks quietly for them.','Mention to others that they are slow.','One Team: support them, stay open about capacity and respect their dignity.','One Team']];
+['A colleague bypasses a safety interlock on shared equipment to finish faster.',[['Ask them to stop now, make the area safe and report it to the supervisor.',5],['Raise it at the next team meeting.',2],['Finish your own task and stay out of their way.',1],['Do the same, since it saves everyone time.',1]],'Safety is never traded for speed. Act now, then report.','Safety'],
+['You spot a small leak near electrical equipment. Fixing it will delay a delivery.',[['Stop work in the area, make it safe if you can, report it and explain the delay to your manager.',5],['Put a bucket under it and finish the delivery first.',2],['Tell the next shift to deal with it.',1],['Wait to see whether it gets worse.',1]],'A hazard near electrics comes before a deadline, and the delay is communicated openly.','Safety'],
+["A quieter teammate's idea is brushed aside by a senior colleague in a meeting.",[['Ask the teammate to expand, point out what is useful, and check in with them afterwards.',5],['Say nothing, to avoid conflict.',2],["Go straight to the senior colleague's manager.",2],['Tell the teammate to speak up more next time.',1]],'Respect means making space for the idea without escalating or blaming.','Respect'],
+['You find an error in a calculation in a report you sent to your manager yesterday.',[['Tell your manager now, send the corrected version and explain what changed.',5],['Fix it in the shared file and say nothing.',2],['Wait to see whether anyone notices.',1],['Mention it only if someone asks.',1]],'Own mistakes early and visibly. Quiet fixes hide what happened.','Excellence'],
+['You think a risk in an agreed plan has not been raised. Your manager is confident in it.',[['Share the risk with evidence and suggest a way to test it.',5],['Say nothing, since the decision is made.',2],['Complain to colleagues afterwards.',1],['Quietly do it your own way instead.',1]],'Courage means raising it constructively with evidence, not staying silent or going around people.','Courage'],
+['Another team is behind on a shared deliverable, which puts your deadline at risk.',[['Offer help, agree a joint plan with them and flag the risk to both managers.',5],['Do your part and let them take the blame.',1],['Take over their work without telling anyone.',2],['Escalate to senior leaders before speaking to them.',2]],'One Team: talk to them first, share the load and keep managers informed.','One Team'],
+['A supplier offers you a gift above company limits while a contract decision is pending.',[['Decline politely, explain the policy and record it as required.',5],['Accept it and share it with the team.',1],['Accept it and declare it after the decision.',2],['Keep it but be extra careful to stay fair.',1]],'Courage to do the right thing: decline and be transparent.','Courage'],
+['A new joiner is struggling with a system and you have your own workload.',[['Show them the basics now, agree a time to help properly and tell your manager if it affects your work.',5],['Tell them to read the manual.',2],['Do their tasks quietly for them.',2],['Mention to others that they are slow.',1]],'One Team: support them, stay open about capacity and respect their dignity.','One Team']];
 const KT={
-bnum:{name:'Swift Global: Numbers',mins:4,build:()=>Array.from({length:12},bpNum)},
-babs:{name:'Swift Global: Abstract',mins:4,build:()=>Array.from({length:12},bpAbs)},
-brec:{name:'Swift Global: Recall',mins:4,build:()=>[]},
-bsjt:{name:'bp situational judgement',mins:10,build:()=>shf(BSJT).map(mq)},
+bsg:{name:'Swift Global (recall, numbers, abstract)',mins:12,build:()=>[]},
+bsjt:{name:'BP situational judgement',mins:10,build:()=>[]},
+
 kcur:{name:'Current affairs',mins:12,build:()=>shf(CA).slice(0,15).map(mq)},
 kreason:{name:'Numerical and logical reasoning',mins:15,build:()=>[...shf([...QPOOL,...GEN,...KGEN]).slice(0,8).map(x=>typeof x==='function'?x():{...x}),...shf(LOG).slice(0,3).map(mq)]},
 kquant:{name:'Quantitative problem solving',mins:25,build:()=>shf(QPOOL).slice(0,20).map(x=>({...x}))},
@@ -696,7 +738,7 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],app
 let D={ans:[],vjt:[],games:[],tests:[],user:null,set:{lang:'en-NG'}};
 (function(){try{const n=JSON.parse(localStorage.getItem(KEY)||'null');if(n){D=Object.assign(D,n);D.set=Object.assign({lang:'en-NG'},n.set);return}const o=JSON.parse(localStorage.getItem('jobvue')||'null');if(o){D.ans=(o.ans||[]).map(a=>({...a,legacy:1}));D.vjt=o.vjt||[]}}catch(e){}})();
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){}};
-let alive=0,busy=false,stream=null,co='shell',tab='overview',flt='all',histN=40,tm=null,disp=[],wl=null;
+let bpChain=null,alive=0,busy=false,stream=null,co='shell',tab='overview',flt='all',histN=40,tm=null,disp=[],wl=null;
 const say=m=>{const e=$('#live');if(e)e.textContent=m};
 const onClean=f=>disp.push(f);
 const stop=()=>{clearInterval(tm);tm=null};
@@ -799,12 +841,13 @@ function igCard(g,au){if(!g&&!au)return'<div class="card sm mut">The integrity c
  ${notes.length?`<ul>${notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`:'<p class="mut sm">No flags raised.</p>'}
  <p class="mut sm">${g&&g.c==='l'?'Limited check: face tracking was unavailable or your face was rarely in view. ':''}These are signals, not proof. A flag means "worth a look", not "cheated": glancing at notes, a dropped connection or poor light can all trigger one. It is worked out on your device, and your video and audio are never uploaded.</p></div>`}
 const tblh=t=>`<table class="t"><tr>${t[0].map(x=>`<th>${x}</th>`).join('')}</tr>${(Array.isArray(t[1][0])?t[1]:[t[1]]).map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</table>`;
-const stageDone=(k,id)=>id==='vjt'?D.vjt.length>0:id==='odvi'?D.ans.some(a=>a.co===k):KT[id]?D.tests.some(x=>x.id===id):['bart','num','gng'].every(g=>D.games.some(x=>x.g===g));
-const launch=id=>id==='brec'?bRec():KT[id]?kTest(id):({vjt,odvi,games})[id]();
+const stageDone=(k,id)=>id==='vjt'?D.vjt.length>0:id==='bm65'?(D.bpm||[]).length>0:id==='odvi'?D.ans.some(a=>a.co===k):KT[id]?D.tests.some(x=>x.id===id):['bart','num','gng'].every(g=>D.games.some(x=>x.g===g));
+const bpRun={bsg:()=>bSG(),bm65:()=>bM65(),bsjt:()=>bSJT()};
+const launch=id=>{if(id==='bfull'){bpChain=['bm65','bsjt'];return bSG()}bpChain=null;return bpRun[id]?bpRun[id]():KT[id]?kTest(id):({vjt,odvi,games})[id]()};
 function start(c){busy=true;keepAwake();if(c)Guard.begin(c)}
-function nextStage(){const n=CO[co].stages.find(s=>!stageDone(co,s[0]));n?needCam(()=>launch(n[0])):show('co')}
+function nextStage(){if(bpChain&&bpChain.length){const c=bpChain.shift();return needCam(()=>bpRun[c]())}bpChain=null;const n=CO[co].stages.find(s=>!stageDone(co,s[0]));n?needCam(()=>launch(n[0])):show('co')}
 
-function show(v){if(!D.user)return signup();alive++;cleanup();releaseCam();busy=false;document.body.dataset.mood='';
+function show(v){if(!D.user)return signup();bpChain=null;alive++;cleanup();releaseCam();busy=false;document.body.dataset.mood='';
  if(v==='home'||v==='dash')document.body.removeAttribute('data-co');else document.body.dataset.co=co;
  $$('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===(v==='dash'?'dash':'home')));
  ({home,co:coPage,dash})[v]();window.scrollTo(0,0)}
@@ -971,39 +1014,136 @@ function home(){const greet=(h=>h<12?'Good morning':h<18?'Good afternoon':'Good 
  const langs=[['en-NG','English (Nigeria)'],['en-GB','English (UK)'],['en-US','English (US)'],['en-ZA','English (South Africa)'],['en-IN','English (India)'],['en-AU','English (Australia)']];
  const n=D.ans.length+D.vjt.length+D.games.length+D.tests.length;
  app.innerHTML=`<section class="stack"><div><p class="mut">${greet}${D.user.name?', '+esc(D.user.name.split(' ')[0]):''}</p><h1>Practise like it's real.</h1><p class="mut">Pick an employer. Each stage mirrors the real format: camera on, timer running, feedback straight after.</p></div>
- <div class="grid c2">${Object.keys(CO).map(k=>{const c=CO[k],d=c.stages.filter(s=>stageDone(k,s[0])).length;return`<button class="co" data-c="${k}" style="--cc:${c.c};--ct:${c.on}"><span class="dot"></span><b>${c.name}</b><span>${c.role}</span><small class="mut">${d} of ${c.stages.length} stages practised</small><i class="go">→</i></button>`}).join('')}</div>
+ <div class="grid c2">${Object.keys(CO).map(k=>{const c=CO[k],d=c.stages.filter(s=>stageDone(k,s[0])).length;let lk='';if(k==='bp'){let u=0;try{u=localStorage.getItem('bpu')==='1'}catch(e){}lk=`<span class="lkb">${bpLk(u)}${u?'Unlocked':'Locked'}</span>`}return`<button class="co" data-c="${k}" style="--cc:${c.c};--ct:${c.on}">${lk}<span class="dot"></span><b>${c.name}</b><span>${c.role}</span><small class="mut">${d} of ${c.stages.length} stages practised</small><i class="go">→</i></button>`}).join('')}</div>
  <div class="card row sp"><div><b>Speech language</b><div class="mut sm">Used for live transcription of your answers</div></div><select id="lang" aria-label="Speech language">${langs.map(l=>`<option value="${l[0]}" ${D.set.lang===l[0]?'selected':''}>${l[1]}</option>`).join('')}</select></div>
  <div class="card"><b>Your device</b><div class="mut sm">${dev.type==='phone'?'Phone detected: touch-sized controls, front camera, and your screen stays awake while you practise.':dev.type==='tablet'?'Tablet detected: touch controls with a wider layout. Rest it on a stand if you can.':'Laptop or desktop detected: wide video, plus keyboard shortcuts (Space to respond, 1 to 4 to choose, Enter to continue).'}</div></div>
  ${n?'<button class="btn ghost" id="td">See my dashboard →</button>':''}</section>`;
  const bpH=t=>{let h=5381;for(const c of String(t).toUpperCase().trim())h=(h*33^c.charCodeAt(0))>>>0;return h};
- const bpGo=()=>{let u=0;try{u=localStorage.getItem('bpu')==='1'}catch(e){}if(u)return show('co');const v=prompt('bp is locked. Enter the access code:');if(v===null)return;if(bpH(v)===4115231339){try{localStorage.setItem('bpu','1')}catch(e){}show('co')}else alert('Wrong code.')};
+ const bpGo=()=>{let u=0;try{u=localStorage.getItem('bpu')==='1'}catch(e){}if(u)return show('co');if($('#bpg'))return;
+ const w=document.createElement('div');w.id='bpg';w.className='bpg';w.setAttribute('role','dialog');w.setAttribute('aria-modal','true');w.setAttribute('aria-label','BP access code');
+ const cells=Array.from({length:10},(_,i)=>`${i===2||i===6?'<span class="d"></span>':''}<span class="c" data-i="${i}"></span>`).join('');
+ w.innerHTML=`<div class="bx"><div class="bpm"><i class="rg"></i><div class="bpt">BP</div><span class="pl">${bpLk(0)}</span>${Array.from({length:14},(_,k)=>{const an=k/14*6.283,d=48+(k%3)*14;return`<s style="--dx:${Math.round(Math.cos(an)*d)}px;--dy:${Math.round(Math.sin(an)*d)}px;--pc:${['#2e9a3c','#a6df4a','#e4f26a'][k%3]}"></s>`}).join('')}</div><b class="bt2">BP practice access</b><p class="mut sm sub">Type the access code you were given.</p><div class="bpc" id="bpcd">${cells}<input id="bpc" autocomplete="one-time-code" autocapitalize="characters" spellcheck="false" inputmode="text" maxlength="14" aria-label="Access code, 10 characters"></div><div class="pg"><i id="bpq"></i></div><p id="bpe" class="sm er" role="alert"></p><div class="row ac"><button class="btn ghost" id="bpx">Cancel</button><button class="btn" id="bpu">Unlock</button></div><button class="eye" id="bpv" type="button" aria-pressed="false">Hide characters</button></div>`;
+ document.body.appendChild(w);const i=$('#bpc'),cd=$('#bpcd'),E=$('#bpe');let v='',hid=false,busy2=false;const close=()=>{w.classList.add('out');setTimeout(()=>w.remove(),230)};
+ const rd=()=>{cd.querySelectorAll('.c').forEach((c,k)=>{const ch=v[k]||'';c.textContent=ch?(hid?'•':ch):'';c.classList.toggle('f',!!ch);c.classList.toggle('cur',k===Math.min(v.length,9))});$('#bpq').style.width=v.length*10+'%'};
+ const fc=()=>cd.classList.add('fc'),bl=()=>cd.classList.remove('fc');i.addEventListener('focus',fc);i.addEventListener('blur',bl);cd.addEventListener('pointerdown',()=>setTimeout(()=>i.focus(),0));
+ const go=()=>{if(busy2)return;if(v.length<10){E.textContent='The code has 10 characters, for example BP-ABCD-1234.';w.classList.remove('no');void w.offsetWidth;w.classList.add('no');return}
+  const code=v.slice(0,2)+'-'+v.slice(2,6)+'-'+v.slice(6);
+  if(bpH(code)===4115231339){busy2=true;try{localStorage.setItem('bpu','1')}catch(e){}E.style.color='var(--ok)';E.textContent='Access granted';w.classList.remove('no');w.classList.add('ok');$('.pl',w).innerHTML=bpLk(1);setTimeout(()=>{w.remove();show('co')},1450)}
+  else{busy2=true;E.style.color='';E.textContent='That code is not right. Try again.';w.classList.remove('no');void w.offsetWidth;w.classList.add('no');setTimeout(()=>{v='';i.value='';rd();busy2=false;i.focus()},750)}};
+ i.addEventListener('input',()=>{if(busy2){i.value=v;return}v=i.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,10);i.value=v;E.textContent='';w.classList.remove('no');rd();if(v.length===10)setTimeout(go,260)});
+ i.addEventListener('keydown',e=>{if(e.key==='Enter')go()});w.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+ $('#bpu').onclick=go;$('#bpx').onclick=close;$('#bpv').onclick=e=>{hid=!hid;e.currentTarget.textContent=hid?'Show characters':'Hide characters';e.currentTarget.setAttribute('aria-pressed',hid);rd();i.focus()};w.addEventListener('click',e=>{if(e.target===w)close()});
+ rd();i.focus()};
  $$('[data-c]').forEach(e=>e.onclick=()=>{co=e.dataset.c;co==='bp'?bpGo():show('co')});
  $('#lang').onchange=e=>{D.set.lang=e.target.value;save()};if(n)$('#td').onclick=()=>show('dash');paintLive()}
 function coPage(){const c=CO[co],nx=c.stages.findIndex(s=>!stageDone(co,s[0]));
  app.innerHTML=`<section class="stack"><div><button class="btn ghost sm" id="bk">← Back</button></div><div><span class="chip">${c.role}</span><h1 style="margin-top:8px">${c.name}</h1></div>
- <div class="stack">${c.stages.map((s,i)=>{const d=stageDone(co,s[0]);return`<button class="stg ${d?'done':''} ${i===nx?'next':''}" data-s="${s[0]}"><span class="num">${d?'✓':i+1}</span><span><b>${s[1]}</b><br><span class="mut sm">${s[2]}</span></span><i>${i===nx?'Start':d?'Redo':'Open'} →</i></button>`}).join('')}</div>
+ ${co==='bp'?`<div class="card"><b>Full run · 28.5 min</b><p class="mut sm">Swift Global 12 min, then Match 6.5 for 6.5 min, then the situational judgement test for 10 min, back to back.</p><div class="row"><button class="btn" id="bfl">Start full run</button><a class="btn ghost" href="https://scap.sc-oasys.com/sites/candidate/aptitude/practice/SGA/en-GB" target="_blank" rel="noopener">Official Swift Global practice</a></div><p class="mut sm">Do Saville's official practice first. It is the exact format.</p></div>`:''}<div class="stack">${c.stages.map((s,i)=>{const d=stageDone(co,s[0]);return`<button class="stg ${d?'done':''} ${i===nx?'next':''}" data-s="${s[0]}"><span class="num">${d?'✓':i+1}</span><span><b>${s[1]}</b><br><span class="mut sm">${s[2]}</span></span><i>${i===nx?'Start':d?'Redo':'Open'} →</i></button>`}).join('')}</div>
  <div class="card"><b>What they look for</b>${c.vals.map(v=>`<div class="vrow"><b>${v[0]}</b> <span class="mut sm">${v[1]}</span></div>`).join('')}<p class="mut sm" style="margin-top:12px">Taken from public careers pages and may change. Confirm on the official site.</p></div>
  <div class="card sm mut">${c.note} Your video stays in your browser and is never uploaded.</div></section>`;
- $('#bk').onclick=()=>show('home');$$('[data-s]').forEach(e=>e.onclick=()=>needCam(()=>launch(e.dataset.s)))}
+ $('#bk').onclick=()=>show('home');if($('#bfl'))$('#bfl').onclick=()=>needCam(()=>launch('bfull'));$$('[data-s]').forEach(e=>e.onclick=()=>needCam(()=>launch(e.dataset.s)))}
 
-/* ---- bp Swift Global Recall practice: memorise a grid, then recall which symbol was in a cell ---- */
-function bRec(){const me=++alive;cleanup();start('test');pip(true);
- const SY=['★','●','▲','■','◆','♥','☾','✚','☀'],T0=performance.now();let rd=0,qn=0,ok=0,done=false,cells=[],qs=[],opts=[];
+/* ---- bp Swift Global: ONE 12-minute timer over recall, numbers and abstract. Pace is reported per area. ---- */
+function bSG(){const me=++alive;cleanup();start('test');pip(true);
+ const SY=['★','●','▲','■','◆','♥','☾','✚','☀'],TL=720,T0=performance.now(),left=()=>Math.max(0,Math.ceil((T0+TL*1000-performance.now())/1000));
+ const AR={Recall:{ok:0,n:8,at:0,ms:0},Numbers:{ok:0,n:12,at:0,ms:0},Abstract:{ok:0,n:12,at:0,ms:0}},nums=Array.from({length:12},bpNum),abs=Array.from({length:12},bpAbs),log=[];
+ let done=false,rd=0,qn=0,cells=[],qs=[],opts=[],q0=0,i=0,sec='Recall',mode='';
+ const upd=l=>{const e=$('#tm');if(e)e.textContent=mmss(l)},prog=()=>(AR.Recall.at+AR.Numbers.at+AR.Abstract.at)/32;
+ const head=t=>`<div class="meta row sp"><span>${t}</span><span class="chip">⏱ <span id="tm">${mmss(left())}</span></span></div>`;
  const grid=f=>`<div style="display:grid;grid-template-columns:repeat(3,64px);gap:8px;justify-content:center;margin:6px 0">${cells.map(f).join('')}</div>`;
  const cell=(t,x='')=>`<div class="card ctr" style="font-size:1.7rem;padding:12px 0;${x}">${t}</div>`;
- function round(){if(rd>=4)return fin();const n=rd<2?6:9,sec=n===6?8:10;cells=shf(SY).slice(0,n);qn=0;qs=shf(cells.map((c,i)=>i)).slice(0,2);
-  app.innerHTML=`<section class="stack"><div class="meta row sp"><span>Round ${rd+1} of 4 · memorise the symbols and their places</span><span class="chip">⏱ <span id="tm">${sec}</span>s</span></div>${barp(rd/4)}<div class="card">${grid(c=>cell(c))}</div></section>`;
-  tick(sec,q,l=>{const e=$('#tm');if(e)e.textContent=l})}
- function q(){if(me!==alive||done)return;if(qn>=2){rd++;return round()}const i=qs[qn],c=cells[i];opts=shf([c,...shf(SY.filter(x=>x!==c)).slice(0,3)]);
-  app.innerHTML=`<section class="stack"><div class="meta row sp"><span>Round ${rd+1} of 4 · question ${qn+1} of 2</span></div>${barp((rd*2+qn)/8)}<div class="card"><h2 class="q" style="margin:0">Which symbol was in the highlighted cell?</h2>${grid((x,j)=>cell('&nbsp;',j===i?'outline:3px solid var(--ac);background:color-mix(in srgb,var(--ac) 25%,var(--sf))':''))}</div>${opts.map((o,k)=>`<button class="opt" data-k="${k}"><span class="k">${k+1}</span><span style="font-size:1.3rem">${o}</span></button>`).join('')}</section>`;
-  $$('.opt').forEach(b=>b.onclick=()=>pk(+b.dataset.k))}
- function pk(k){if(done||opts[k]===undefined)return;if(opts[k]===cells[qs[qn]])ok++;qn++;q()}
- keys(e=>{if(/^[1-4]$/.test(e.key))pk(+e.key-1)});
- function fin(){if(done)return;done=true;stop();const secs=Math.round((performance.now()-T0)/1000),p=Math.round(ok/8*100),g=Guard.end(),m={ok,n:8,secs,avgMs:0,cats:{Recall:[ok,8]}};
-  D.tests.push({id:'brec',p,m,t:Date.now(),ig:cg(g)});report('test',{id:'brec',p,m,ig:cg(g)});save();busy=false;releaseCam();cleanup();setMood(p);
-  app.innerHTML=`<section class="stack">${cmp('Swift Global: Recall')}<div class="grid c4"><div class="card stat"><b>${p}%</b><span class="mut sm">Score</span></div><div class="card stat"><b>${ok} / 8</b><span class="mut sm">Correct</span></div><div class="card stat"><b>${mmss(secs)}</b><span class="mut sm">Time used</span></div></div><div class="card">${p>=75?'Strong recall.':'Try grouping symbols by row, or make a quick story ("star top left, circle next to it"), and avoid re-checking once the grid is hidden.'}</div>${igCard(g)}<div class="row"><button class="btn" id="s">Next stage</button><button class="btn ghost" id="r">Try again</button><button class="btn ghost" id="d">Dashboard</button></div></section>`;
-  $('#s').onclick=nextStage;$('#r').onclick=()=>needCam(bRec);$('#d').onclick=()=>show('dash')}
- round()}
+ function round(){if(done||me!==alive)return;if(rd>=4){sec='Numbers';i=0;return mc()}
+  const n=rd<2?6:9,s=n===6?8:10;mode='mem';cells=shf(SY).slice(0,n);qn=0;qs=shf(cells.map((c,k)=>k)).slice(0,2);
+  app.innerHTML=`<section class="stack">${head(`Swift Global · Recall · grid ${rd+1} of 4 · memorise the symbols and their places`)}${barp(prog())}<div class="card">${grid(c=>cell(c))}<div class="bar"><i id="mb" style="width:100%;transition:width ${s}s linear"></i></div></div></section>`;
+  const a=setTimeout(()=>{const b=$('#mb');if(b)b.style.width='0'},60),h=setTimeout(rq,s*1000);onClean(()=>{clearTimeout(a);clearTimeout(h)})}
+ function rq(){if(done||me!==alive)return;if(qn>=2){rd++;return round()}mode='rq';const k=qs[qn],c=cells[k];opts=shf([c,...shf(SY.filter(x=>x!==c)).slice(0,3)]);q0=performance.now();
+  app.innerHTML=`<section class="stack">${head(`Swift Global · Recall · grid ${rd+1} of 4 · question ${qn+1} of 2`)}${barp(prog())}<div class="card"><h2 class="q" style="margin:0">Which symbol was in the highlighted cell?</h2>${grid((x,j)=>cell('&nbsp;',j===k?'outline:3px solid var(--ac);background:color-mix(in srgb,var(--ac) 25%,var(--sf))':''))}</div>${opts.map((o,j)=>`<button class="opt" data-k="${j}"><span class="k">${j+1}</span><span style="font-size:1.3rem">${o}</span></button>`).join('')}</section>`;
+  $$('.opt').forEach(b=>b.onclick=()=>pickR(+b.dataset.k))}
+ function pickR(j){if(done||mode!=='rq'||opts[j]===undefined)return;const a=AR.Recall;a.at++;a.ms+=performance.now()-q0;if(opts[j]===cells[qs[qn]])a.ok++;qn++;rq()}
+ function mc(){if(done||me!==alive)return;const L=sec==='Numbers'?nums:abs;if(i>=L.length){if(sec==='Numbers'){sec='Abstract';i=0;return mc()}return fin()}
+  mode='mc';const q=L[i];q0=performance.now();
+  app.innerHTML=`<section class="stack">${head(`Swift Global · ${sec} · ${i+1} of ${L.length}`)}${barp(prog())}<div class="card"><h2 class="q" style="margin:0">${esc(q.q)}</h2>${q.svg||''}</div>${q.o.map((o,k)=>`<button class="opt" data-k="${k}"><span class="k">${k+1}</span><span>${esc(String(o))}</span></button>`).join('')}<div><button class="btn ghost sm" id="sk">Skip</button></div></section>`;
+  $$('.opt').forEach(b=>b.onclick=()=>rec(q.o[+b.dataset.k]));$('#sk').onclick=()=>rec(null,true)}
+ function rec(p,skip){if(done||mode!=='mc')return;const L=sec==='Numbers'?nums:abs,q=L[i],a=AR[sec],ok=!skip&&String(p)===String(q.ans);a.at++;a.ms+=performance.now()-q0;if(ok)a.ok++;log.push({sec,q,pick:skip?'—':p,ok,skip:!!skip});i++;mc()}
+ keys(e=>{if(!/^[1-4]$/.test(e.key))return;const k=+e.key-1;if(mode==='rq')pickR(k);else if(mode==='mc'){const L=sec==='Numbers'?nums:abs;if(L[i]&&L[i].o[k]!==undefined)rec(L[i].o[k])}});
+ function fin(){if(done)return;done=true;stop();mode='';const secs=Math.min(TL,Math.round((performance.now()-T0)/1000)),g=Guard.end(),A=Object.values(AR),ok=A.reduce((s,a)=>s+a.ok,0),at=A.reduce((s,a)=>s+a.at,0),p=Math.round(ok/32*100),avgMs=at?Math.round(A.reduce((s,a)=>s+a.ms,0)/at):0,cats={};
+  Object.entries(AR).forEach(([k,a])=>cats[k]=[a.ok,a.n]);const m={ok,n:32,secs,avgMs,cats,att:at};
+  D.tests.push({id:'bsg',p,m,t:Date.now(),ig:cg(g)});report('test',{id:'bsg',p,m,ig:cg(g)});save();busy=false;releaseCam();cleanup();setMood(p);
+  const pace=at>=32?(secs<TL-60?`You attempted everything with ${mmss(TL-secs)} to spare. If your accuracy is high, you can afford to slow down slightly.`:'You attempted everything. Keep that pace and protect your accuracy.'):`You reached ${at} of 32 questions. Saville reports pace as well as accuracy, so aim to move on from any question that takes more than about 25 seconds.`;
+  app.innerHTML=`<section class="stack">${cmp('Swift Global')}<div class="grid c4"><div class="card stat"><b>${p}%</b><span class="mut sm">Score</span></div><div class="card stat"><b>${ok} / 32</b><span class="mut sm">Correct</span></div><div class="card stat"><b>${at} / 32</b><span class="mut sm">Attempted</span></div><div class="card stat"><b>${mmss(secs)}</b><span class="mut sm">of 12:00 used</span></div></div>
+  <div class="card"><b>Accuracy and pace by area</b>${Object.entries(AR).map(([k,a])=>hb(k,Math.round(a.ok/a.n*100),`${a.ok} of ${a.n} correct · ${a.at} attempted${a.at?' · '+(a.ms/a.at/1000).toFixed(1)+'s each':''}`)).join('')}<p class="mut sm" style="margin-top:8px">${pace}</p></div>${igCard(g)}
+  <div class="stack"><b>Review (numbers and abstract)</b>${log.map(l=>`<details class="card"><summary><span class="dotc" style="background:${l.ok?'var(--ok)':l.skip?'var(--mid)':'var(--bad)'}"></span><span style="flex:1">${l.sec}: ${esc(l.q.q)}</span></summary><div class="in">${l.q.svg||''}<p><b>Your answer:</b> ${esc(String(l.pick))} · <b>Correct:</b> ${esc(String(l.q.ans))}</p><p class="mut">${esc(l.q.why)}</p></div></details>`).join('')||'<p class="mut sm">No numbers or abstract questions reached.</p>'}</div>
+  <div class="card sm mut">Practice approximation: Saville does not publish the real counts, how the 12 minutes are shared, or the number of answer options. For the exact format, use the official Saville practice test and your own dashboard.</div>
+  <div class="row"><button class="btn" id="s">${bpChain&&bpChain.length?'Continue full run':'Next stage'}</button><button class="btn ghost" id="r">Try again</button><button class="btn ghost" id="d">Dashboard</button></div></section>`;
+  $('#s').onclick=nextStage;$('#r').onclick=()=>{bpChain=null;needCam(bSG)};$('#d').onclick=()=>show('dash')}
+ tick(TL,fin,upd,[60,10]);round()}
+
+/* ---- bp Match 6.5: statements in blocks of six, each rated 1 to 9; equal ratings come back as a tie-break. Not scored. ---- */
+const M65=[['Planning',['I plan my work in detail before I start.','I keep a clear list of priorities and update it every day.','I set milestones so that I stay on schedule.']],
+['Safety focus',['I stop work if something looks unsafe, even when it causes delay.','I check equipment and surroundings before I begin a task.','I speak up when others take safety shortcuts.']],
+['Teamwork',['I make time to help colleagues who are struggling.','I share information freely so others can do their jobs.','I prefer to work through problems together with others.']],
+['Initiative',['I act without waiting to be asked when I see something that needs doing.','I look for ways to improve how things are done.','I start useful tasks before anyone tells me to.']],
+['Persuading',['I can change people\'s minds with a clear argument.','I enjoy presenting my ideas to a group.','I find it easy to get others behind my plan.']],
+['Analysing',['I like to dig into the numbers before I decide.','I look for the root cause of a problem, not just the symptoms.','I weigh up the evidence on both sides before I conclude.']],
+['Resilience',['I stay calm when plans fall apart.','I bounce back quickly after a setback.','I keep going when the work gets tough.']],
+['Adaptability',['I adjust quickly when priorities change.','I enjoy learning new ways of working.','I am comfortable in unfamiliar situations.']],
+['Drive',['I set demanding targets for myself.','I am not satisfied until the result is as good as I can make it.','I like to measure my progress against clear goals.']],
+['Respect for others',['I listen carefully before I give my view.','I get on easily with people from different backgrounds.','I take care to treat everyone fairly.']],
+['Leading',['I take charge when a group needs direction.','I give clear instructions and check that people understand.','I am comfortable making decisions on behalf of a group.']],
+['Ownership',['I admit my mistakes straight away.','I stand by what is right even when it is unpopular.','I follow through on every promise I make.']]];
+function bM65(){const me=++alive;cleanup();start('test');pip(true);
+ const TL=390,T0=performance.now(),left=()=>Math.max(0,Math.ceil((T0+TL*1000-performance.now())/1000));
+ const BL=[0,1,2,3,4,5].map(j=>shf([0,1,2,3,4,5].map(k=>{const c=(j+2*k)%12;return{n:M65[c][0],t:M65[c][1][Math.floor(j/2)]}})));
+ const rate=Array.from({length:6},()=>Array(6).fill(0)),adj=Array.from({length:6},()=>Array(6).fill(0));
+ let b=0,done=false,ties=0,tg=[],ti=0,bd=0,mode='';
+ const upd=l=>{const e=$('#tm');if(e)e.textContent=mmss(l)},head=t=>`<div class="meta row sp"><span>${t}</span><span class="chip">⏱ <span id="tm">${mmss(left())}</span></span></div>`;
+ function block(){if(done||me!==alive)return;if(b>=6)return fin();mode='rate';const S=BL[b];
+  app.innerHTML=`<section class="stack">${head(`Match 6.5 · block ${b+1} of 6`)}${barp(b/6)}<div class="card sm">Rate how much each statement is like you. 1 is not at all like me and 9 is very like me. You must rate every statement. If two share a rating, you will be asked which is more like you.</div>${S.map((s,k)=>`<div class="card"><div>${esc(s.t)}</div><div class="rt" style="--n:9" data-k="${k}" role="group" aria-label="Rating from 1 to 9">${[1,2,3,4,5,6,7,8,9].map(v=>`<button type="button" data-v="${v}" aria-pressed="${rate[b][k]===v}" class="${rate[b][k]===v?'on':''}">${v}</button>`).join('')}</div><div class="row sp mut sm"><span>Not like me</span><span>Very like me</span></div></div>`).join('')}<button class="btn" id="nx" disabled>${b<5?'Next block':'Finish'}</button></section>`;
+  const chk=()=>{$('#nx').disabled=rate[b].some(v=>!v)};
+  $$('.rt').forEach(r=>r.querySelectorAll('button').forEach(x=>x.onclick=()=>{rate[b][+r.dataset.k]=+x.dataset.v;r.querySelectorAll('button').forEach(y=>{y.classList.toggle('on',y===x);y.setAttribute('aria-pressed',y===x)});chk()}));
+  chk();$('#nx').onclick=()=>{if(rate[b].some(v=>!v))return;const m={};rate[b].forEach((v,k)=>(m[v]=m[v]||[]).push(k));tg=Object.values(m).filter(g=>g.length>1);ti=0;tie()}}
+ function tie(){if(done||me!==alive)return;if(ti>=tg.length){bd++;b++;return block()}mode='tie';ask(tg[ti],'most')}
+ function ask(g,w){const S=BL[b];
+  app.innerHTML=`<section class="stack">${head(`Match 6.5 · block ${b+1} of 6 · tie-break`)}${barp(b/6)}<div class="card">You gave these the same rating (${rate[b][g[0]]}). Which is <b>${w}</b> like you?</div>${g.map((k,j)=>`<button class="opt" data-k="${k}"><span class="k">${j+1}</span><span>${esc(S[k].t)}</span></button>`).join('')}</section>`;
+  $$('.opt').forEach(o=>o.onclick=()=>{const k=+o.dataset.k;adj[b][k]+=w==='most'?.4:-.4;if(w==='most')ties++;const rest=g.filter(x=>x!==k);
+   if(w==='most'){if(rest.length>1)ask(rest,'least');else{adj[b][rest[0]]-=.4;ti++;tie()}}else{ti++;tie()}})}
+ keys(e=>{if(mode==='tie'&&/^[1-6]$/.test(e.key)){const o=$$('.opt')[+e.key-1];if(o)o.click()}else if(mode==='rate'&&e.key==='Enter'){const n=$('#nx');if(n&&!n.disabled)n.click()}});
+ function fin(){if(done)return;done=true;stop();mode='';const secs=Math.min(TL,Math.round((performance.now()-T0)/1000)),g=Guard.end(),th={},flat=[];
+  for(let j=0;j<bd;j++)BL[j].forEach((s,k)=>{(th[s.n]=th[s.n]||[]).push(rate[j][k]+adj[j][k]);flat.push(rate[j][k])});
+  const T=Object.entries(th).map(([n,a])=>[n,avg(a)]).sort((x,y)=>y[1]-x[1]),used=new Set(flat).size,nine=flat.filter(v=>v===9).length,one=flat.filter(v=>v===1).length;
+  D.bpm=D.bpm||[];D.bpm.push({t:Date.now(),blocks:bd,rated:flat.length,secs,ties,ig:cg(g)});save();busy=false;releaseCam();cleanup();
+  app.innerHTML=`<section class="stack">${cmp('Match 6.5')}<div class="grid c4"><div class="card stat"><b>${bd} / 6</b><span class="mut sm">Blocks done</span></div><div class="card stat"><b>${flat.length}</b><span class="mut sm">Statements rated</span></div><div class="card stat"><b>${mmss(secs)}</b><span class="mut sm">of 6:30 used</span></div><div class="card stat"><b>${ties}</b><span class="mut sm">Tie-breaks</span></div></div>
+  ${bd<6?`<div class="card">Time ran out after ${bd} of 6 blocks. At about 11 seconds a statement, go with your first instinct.</div>`:''}
+  <div class="card"><b>This part has no right answers</b><p>Saville compares your pattern with the profile for the role, so there is no score to chase. The best practice is to answer honestly and quickly, and to use the full scale.</p>
+  ${flat.length?`<ul><li>You used ${used} of the 9 rating values${nine?`, with ${nine} nine${nine>1?'s':''}`:''}${one?` and ${one} one${one>1?'s':''}`:''}. ${ties>6?'Many statements shared a rating, so tie-breaks came up often. Spreading your ratings saves time.':'Good spread.'}</li><li>Highest-rated themes in this run: ${T.slice(0,3).map(x=>x[0]).join(', ')}. Lowest: ${T.slice(-3).reverse().map(x=>x[0]).join(', ')}.</li></ul>`:''}
+  <p class="mut sm">The twelve themes and the 36 statements are my own wording for practice. They are not Saville's items.</p></div>${igCard(g)}
+  <div class="row"><button class="btn" id="s">${bpChain&&bpChain.length?'Continue full run':'Next stage'}</button><button class="btn ghost" id="r">Try again</button><button class="btn ghost" id="d">Dashboard</button></div></section>`;
+  $('#s').onclick=nextStage;$('#r').onclick=()=>{bpChain=null;needCam(bM65)};$('#d').onclick=()=>show('dash')}
+ tick(TL,fin,upd,[60,10]);block()}
+
+/* ---- bp situational judgement: rate how effective each of four actions is ---- */
+function bSJT(){const me=++alive;cleanup();start('test');pip(true);
+ const TL=600,T0=performance.now(),left=()=>Math.max(0,Math.ceil((T0+TL*1000-performance.now())/1000));
+ const qs=shf(BSJT).map(r=>({q:r[0],a:shf(r[1].map(x=>({t:x[0],k:x[1]}))),why:r[2],v:r[3]})),rt=qs.map(()=>[0,0,0,0]),ms=qs.map(()=>0);
+ let i=0,done=false,q0=0;
+ const upd=l=>{const e=$('#tm');if(e)e.textContent=mmss(l)},LB=['','Extremely ineffective','Ineffective','Neither effective nor ineffective','Effective','Extremely effective'];
+ function one(){if(done||me!==alive)return;if(i>=qs.length)return fin();const q=qs[i];q0=performance.now();
+  app.innerHTML=`<section class="stack"><div class="meta row sp"><span>Situational judgement · scenario ${i+1} of ${qs.length}</span><span class="chip">⏱ <span id="tm">${mmss(left())}</span></span></div>${barp(i/qs.length)}<div class="card"><h2 class="q" style="margin:0">${esc(q.q)}</h2><p class="mut sm" style="margin-top:8px">Rate how effective each action would be: 1 = extremely ineffective, 3 = neither, 5 = extremely effective.</p></div>${q.a.map((a,k)=>`<div class="card"><div>${esc(a.t)}</div><div class="rt" style="--n:5" data-k="${k}" role="group" aria-label="Effectiveness from 1 to 5">${[1,2,3,4,5].map(v=>`<button type="button" data-v="${v}" title="${LB[v]}" aria-pressed="false">${v}</button>`).join('')}</div></div>`).join('')}<button class="btn" id="nx" disabled>${i+1<qs.length?'Next scenario':'Finish'}</button></section>`;
+  const chk=()=>{$('#nx').disabled=rt[i].some(v=>!v)};
+  $$('.rt').forEach(r=>r.querySelectorAll('button').forEach(x=>x.onclick=()=>{rt[i][+r.dataset.k]=+x.dataset.v;r.querySelectorAll('button').forEach(y=>{y.classList.toggle('on',y===x);y.setAttribute('aria-pressed',y===x)});chk()}));
+  chk();$('#nx').onclick=()=>{if(rt[i].some(v=>!v))return;ms[i]=performance.now()-q0;i++;one()}}
+ keys(e=>{if(e.key==='Enter'){const n=$('#nx');if(n&&!n.disabled)n.click()}});
+ function fin(){if(done)return;done=true;stop();const secs=Math.min(TL,Math.round((performance.now()-T0)/1000)),g=Guard.end(),fr=qs.map((q,j)=>q.a.reduce((s,a,k)=>s+(rt[j][k]?1-Math.abs(rt[j][k]-a.k)/4:0),0)/4),cats={};let ex=0;
+  qs.forEach((q,j)=>{cats[q.v]=cats[q.v]||[0,0];cats[q.v][0]=Math.round((cats[q.v][0]+fr[j])*10)/10;cats[q.v][1]++;q.a.forEach((a,k)=>{if(rt[j][k]===a.k)ex++})});
+  const tot=fr.reduce((s,x)=>s+x,0),p=Math.round(tot/qs.length*100),seen=ms.filter(x=>x>0),avgMs=Math.round(avg(seen)),m={ok:Math.round(tot*10)/10,n:qs.length,secs,avgMs,cats,exact:ex};
+  D.tests.push({id:'bsjt',p,m,t:Date.now(),ig:cg(g)});report('test',{id:'bsjt',p,m,ig:cg(g)});save();busy=false;releaseCam();cleanup();setMood(p);
+  app.innerHTML=`<section class="stack">${cmp('Situational judgement')}<div class="grid c4"><div class="card stat"><b>${p}%</b><span class="mut sm">Closeness to suggested ratings</span></div><div class="card stat"><b>${ex} / ${qs.length*4}</b><span class="mut sm">Exact matches</span></div><div class="card stat"><b>${seen.length} / ${qs.length}</b><span class="mut sm">Scenarios done</span></div><div class="card stat"><b>${mmss(secs)}</b><span class="mut sm">of 10:00 used</span></div></div>
+  <div class="card"><b>By value</b>${Object.entries(cats).map(([k,[a,b]])=>hb(k,Math.round(a/b*100),a+' of '+b)).join('')}</div>${igCard(g)}
+  <div class="stack"><b>Review</b>${qs.map((q,j)=>`<details class="card"><summary><span class="dotc" style="background:${sc(fr[j]*100)}"></span><span style="flex:1">${esc(q.q)}</span></summary><div class="in">${q.a.map((a,k)=>`<p>${esc(a.t)}<br><span class="mut sm">You: ${rt[j][k]?rt[j][k]+' ('+LB[rt[j][k]]+')':'not rated'} · Suggested: ${a.k} (${LB[a.k]})</span></p>`).join('')}<p class="mut">${esc(q.why)}</p></div></details>`).join('')}</div>
+  <div class="card sm mut">The suggested ratings are my judgement of BP's values, not Saville's answer key. Each action is worth up to 1 point, reduced by a quarter for every step you are away from my rating. The real test may use a different scale and timing.</div>
+  <div class="row"><button class="btn" id="s">${bpChain&&bpChain.length?'Continue full run':'Next stage'}</button><button class="btn ghost" id="r">Try again</button><button class="btn ghost" id="d">Dashboard</button></div></section>`;
+  $('#s').onclick=nextStage;$('#r').onclick=()=>{bpChain=null;needCam(bSJT)};$('#d').onclick=()=>show('dash')}
+ tick(TL,fin,upd,[60,10]);one()}
 
 /* ---- Shell Virtual Job Try-out ---- */
 function vjt(){const me=++alive;cleanup();start('test');pip(true);
@@ -1169,7 +1309,7 @@ const gauge=(v,lo,hi,a,b)=>{const p=x=>Math.max(0,Math.min(100,(x-lo)/(hi-lo)*10
 
 function dash(){
  if(!D.ans.length&&!D.vjt.length&&!D.games.length&&!D.tests.length){app.innerHTML=`<section class="stack"><h1>Dashboard</h1><div class="card ctr"><p><b>Nothing here yet.</b></p><p class="mut">Finish an interview answer, a try-out or a game and your scores, trends and weak spots appear here.</p><button class="btn" id="st">Start practising</button></div></section>`;$('#st').onclick=()=>show('home');return}
- app.innerHTML=`<section class="stack"><div class="row sp"><h1 style="margin:0">Dashboard</h1><div class="seg" id="flt" role="group" aria-label="Company filter">${[['all','All'],['shell','Shell'],['bae','BAE'],['kpmg','KPMG'],['deloitte','Deloitte']].map(([k,l])=>`<button data-f="${k}" class="${flt===k?'on':''}">${l}</button>`).join('')}</div></div><div class="seg" id="tabs" role="group" aria-label="Sections">${TABS.map(t=>`<button data-t="${t[0]}" class="${tab===t[0]?'on':''}">${t[1]}</button>`).join('')}</div><div id="pane" class="stack"></div><p id="tip" class="tip" role="status">Tap or hover a point or bar for details.</p></section>`;
+ app.innerHTML=`<section class="stack"><div class="row sp"><h1 style="margin:0">Dashboard</h1><div class="seg" id="flt" role="group" aria-label="Company filter">${[['all','All'],['shell','Shell'],['bae','BAE'],['kpmg','KPMG'],['deloitte','Deloitte'],['bp','BP']].map(([k,l])=>`<button data-f="${k}" class="${flt===k?'on':''}">${l}</button>`).join('')}</div></div><div class="seg" id="tabs" role="group" aria-label="Sections">${TABS.map(t=>`<button data-t="${t[0]}" class="${tab===t[0]?'on':''}">${t[1]}</button>`).join('')}</div><div id="pane" class="stack"></div><p id="tip" class="tip" role="status">Tap or hover a point or bar for details.</p></section>`;
  $$('#flt button').forEach(b=>b.onclick=()=>{flt=b.dataset.f;dash()});$$('#tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;dash()});
  $('#pane').innerHTML=({overview:pOver,interviews:pInt,tryout:pTry,games:pGames,tests:pTests,integrity:pInteg,history:pHist})[tab]();
  if(tab==='history')bindHist()}
@@ -1212,7 +1352,7 @@ function allIg(){const o=[],P=(t,kind,ig,l,x)=>o.push({t,kind,s:ig.s,k:ig.k||{},
  D.ans.forEach(a=>{if(a.ig&&(flt==='all'||a.co===flt))P(a.t,'Interview',a.ig,a.q,{au:a.au,sn:a.sn})});
  if(flt==='all'||flt==='shell')D.vjt.forEach(v=>{if(v.ig)P(v.t,'Try-out',v.ig,'Virtual Job Try-out')});
  if(flt==='all'||flt==='bae')D.games.forEach(g=>{if(g.ig)P(g.t,'Game',g.ig,({bart:'Balloon risk',num:'Number reasoning',gng:'Focus and reaction'})[g.g]||g.g)});
- if(flt==='all'||flt==='kpmg'||flt==='deloitte')D.tests.forEach(x=>{if(x.ig)P(x.t,'Test',x.ig,KT[x.id]?KT[x.id].name:x.id)});
+ if(flt==='all'||flt==='kpmg'||flt==='deloitte'||flt==='bp')D.tests.forEach(x=>{if(x.ig)P(x.t,'Test',x.ig,KT[x.id]?KT[x.id].name:x.id)});
  return o.sort((a,b)=>a.t-b.t)}
 function igOver(){const L=allIg();if(!L.length)return'';const m=Math.round(avg(L.slice(-10).map(x=>x.s))),sn=L.filter(x=>x.sn!=null).slice(-10),l=lvl(m);
  return`<div class="card row">${ring(sn.length?Math.round(avg(sn.map(x=>x.sn))):m,sn.length?'Sincerity':'Integrity',76)}<div style="flex:1;min-width:200px"><div class="row sp"><b>Sincerity and integrity</b><span class="chip ${l[1]}">${l[0]}</span></div><div class="mut sm">Integrity ${m} across your last ${Math.min(10,L.length)} monitored session${L.length>1?'s':''}. Open the Integrity tab for detail. Signals, not proof.</div></div></div>`}
@@ -1228,16 +1368,16 @@ function pInteg(){const L=allIg();
  <div class="card"><b>Recent sessions</b>${L.slice(-8).reverse().map(x=>{const l=lvl(x.s),t=kt(x.k,x.kind!=='Interview');return`<div class="vrow"><span class="chip ${l[1]}">${x.s}</span> <b>${esc(x.l)}</b><div class="mut sm">${dt(x.t)} · ${x.kind}${t.length?' · '+t.join(', '):' · no flags'}${x.c==='l'?' · limited check':''}</div></div>`}).join('')}</div>
  <div class="card sm mut"><b>How to read this.</b> Integrity starts at 100 and loses points for each signal. Authenticity rates wording only: first-person actions, names and figures, stock phrases, and overlap with your earlier answers. Sincerity blends them (60% integrity, 40% authenticity) for interviews. None of this proves honesty or cheating. Glancing at notes, a dropped connection or poor lighting can raise flags, and a calm, rehearsed liar can score well. Use it to build honest habits, not as a verdict.${lim(L)}</div>`}
 const lim=L=>L.some(x=>x.c==='l')?' Sessions marked limited had no working face tracking (it needs an internet connection to load once).':'';
-function pTests(){const T=D.tests;if(!T.length)return'<div class="card">No KPMG tests yet. They are the first KPMG stages.</div>';
+function pTests(){const T=D.tests;if(!T.length)return'<div class="card">No timed tests yet. They are in the KPMG, Deloitte and BP stages.</div>';
  return Object.keys(KT).map(id=>{const h=T.filter(x=>x.id===id);if(!h.length)return`<div class="card"><b>${KT[id].name}</b><p class="mut sm">Not taken yet.</p></div>`;const v=h.map(x=>x.p),c={};h.forEach(x=>Object.entries(x.m.cats||{}).forEach(([k,[a,b]])=>{c[k]=c[k]||[0,0];c[k][0]+=a;c[k][1]+=b}));const m=h[h.length-1].m;
   return`<div class="card"><div class="row sp"><b>${KT[id].name}</b>${spark(v)}</div><div class="mut sm">${h.length} attempt${h.length>1?'s':''} · best ${Math.max(...v)}% · latest ${v[v.length-1]}%</div><div class="mut sm" style="margin-top:8px">Latest: ${m.ok}/${m.n} in ${mmss(m.secs)}, ${Math.round(m.avgMs/1000)}s per question. Accuracy by topic across all attempts:</div>${Object.entries(c).sort((a,b)=>a[1][0]/a[1][1]-b[1][0]/b[1][1]).map(([k,[a,b]])=>hb(k,Math.round(a/b*100),a+' of '+b)).join('')}</div>`}).join('')}
 
-function pHist(){const items=[...D.ans.filter(a=>flt==='all'||a.co===flt).map(a=>({t:a.t,k:'a',a})),...(flt==='all'||flt==='shell'?D.vjt.map(v=>({t:v.t,k:'v',v})):[]),...(flt==='all'||flt==='bae'?D.games.map(g=>({t:g.t,k:'g',g})):[]),...(flt==='all'||flt==='kpmg'?D.tests.map(x=>({t:x.t,k:'t',x})):[])].sort((a,b)=>b.t-a.t);
+function pHist(){const items=[...D.ans.filter(a=>flt==='all'||a.co===flt).map(a=>({t:a.t,k:'a',a})),...(flt==='all'||flt==='shell'?D.vjt.map(v=>({t:v.t,k:'v',v})):[]),...(flt==='all'||flt==='bae'?D.games.map(g=>({t:g.t,k:'g',g})):[]),...(flt==='all'||flt==='kpmg'||flt==='deloitte'||flt==='bp'?D.tests.map(x=>({t:x.t,k:'t',x})):[])].sort((a,b)=>b.t-a.t);
  const GN={bart:'Balloon risk',num:'Number reasoning',gng:'Focus and reaction'};
  const rows=items.slice(0,histN).map(it=>{
   if(it.k==='a'){const a=it.a;return`<details class="card"><summary><span class="dotc" style="background:${sc(a.o)}"></span><span style="flex:1"><b>${esc(a.q)}</b><br><span class="mut sm">${dt(a.t)} · ${CO[a.co]?CO[a.co].name:a.co} interview</span></span><b>${a.o}</b></summary><div class="in"><p class="mut sm">Specificity ${a.sp} · Delivery ${a.cf}${a.m?` · ${a.m.w} words${a.m.wpm?' · '+a.m.wpm+' wpm':''}`:''}${a.sn!=null?` · Sincerity ${a.sn}`:''}</p>${a.tx?`<p style="white-space:pre-wrap">${esc(a.tx)}</p>`:'<p class="mut sm">No transcript saved for this older answer.</p>'}${a.fl.length?`<ul>${a.fl.slice(0,3).map(f=>`<li><b>${FL[f][0]}.</b> ${FL[f][1]}</li>`).join('')}</ul>`:''}</div></details>`}
   if(it.k==='v'){const v=it.v;return`<div class="card row sp"><span class="row"><span class="dotc" style="background:${sc(v.p)}"></span><span><b>Virtual Job Try-out</b><br><span class="mut sm">${dt(v.t)}</span></span></span><b>${v.p}%</b></div>`}
-  if(it.k==='t'){const x=it.x;return`<div class="card row sp"><span><b>${KT[x.id]?KT[x.id].name:x.id}</b><br><span class="mut sm">${dt(x.t)} · KPMG test${x.ig?' · integrity '+x.ig.s:''}</span></span><span>${x.m.ok}/${x.m.n} · ${x.p}%</span></div>`}
+  if(it.k==='t'){const x=it.x;return`<div class="card row sp"><span><b>${KT[x.id]?KT[x.id].name:x.id}</b><br><span class="mut sm">${dt(x.t)} · Timed test${x.ig?' · integrity '+x.ig.s:''}</span></span><span>${x.m.ok}/${x.m.n} · ${x.p}%</span></div>`}
   const g=it.g,m=g.m,s=g.g==='num'?`${m.ok}/${m.n} correct`:g.g==='gng'?`${m.acc}% accuracy · ${m.mrt} ms`:`${m.adj} avg pumps · ${m.pops} popped`;
   return`<div class="card row sp"><span><b>${GN[g.g]||g.g}</b><br><span class="mut sm">${dt(g.t)}</span></span><span>${s}</span></div>`}).join('');
  return`<div class="stack">${rows||'<div class="card">Nothing in this view yet.</div>'}${items.length>histN?'<button class="btn ghost" id="more">Show more</button>':''}</div>
