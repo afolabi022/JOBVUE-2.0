@@ -15,6 +15,8 @@ body[data-co=shell]{--ac:#f5b400;--on:#14161a}
 body[data-co=bae]{--ac:#2f5fe8;--on:#fff}
 body[data-co=kpmg]{--ac:#00338d;--on:#fff}
 body[data-co=deloitte]{--ac:#86bc25;--on:#14161a}
+body[data-co=bp]{--ac:#2e9a3c;--on:#fff}
+@media(prefers-color-scheme:dark){body[data-co=bp]{--ac:#4cc15a;--on:#0e0f12}}
 [hidden]{display:none!important}
 .chip.au .s,.chip.au .x{display:inline-block;overflow:hidden;white-space:nowrap;transition:max-width .6s ease,opacity .5s ease}
 .chip.au .s{max-width:120px}
@@ -167,7 +169,13 @@ kpmg:{name:'KPMG',role:'Graduate Trainee Programme',c:'#00338d',on:'#ffffff',ret
  vals:[['Integrity','We do what is right.'],['Excellence','We never stop learning and improving.'],['Courage','We think and act boldly.'],['Together','We respect each other and win as one.'],['For Better','We do what matters, for clients and society.']],
  kw:{Integrity:/\b(integrity|honest\w*|ethic\w*|the right thing|independen\w*|objectiv\w*|complian\w*|confidential\w*|escalat\w*|spoke up|refus\w*|declin\w*)\b/i,Excellence:/\b(excellen\w*|quality|learn(ed|t|ing)|improv\w*|double-?check\w*|review(ed)?|certif\w*|upskill\w*|high standard\w*|accura\w*)\b/i,Courage:/\b(courag\w*|challeng\w*|spoke up|speak up|pushed back|stepped (forward|up)|took the lead|difficult conversation|disagree\w*|volunteer\w*)\b/i,Together:/\b(together|team\w*|collaborat\w*|listen(ed|ing)?|support(ed)?|respect\w*|inclusi\w*|shared|colleague\w*|helped)\b/i,'For Better':/\b(community|impact|society|sustainab\w*|client\w*|better|benefit\w*|difference|purpose|volunteer\w*)\b/i},
  stages:[['kcur','Current affairs test','15 questions, 12 min'],['kreason','Numerical and logical reasoning','11 questions, 15 min'],['kquant','Quantitative problem solving','20 questions, 25 min'],['kverbal','Verbal reasoning','9 questions, 12 min'],['kcr','Passage reasoning','12 passage questions, 25 min'],['odvi','Video interview','30s prep, 2 min answers']],
- Q:[['Why KPMG, and why this graduate programme?','Motivation'],['Tell us about a time you analysed information to reach a recommendation.','Analysis'],['Describe a time you worked in a team to deliver something under pressure.','Teamwork'],['Tell us about a time you had the courage to challenge a decision or say something difficult.','Courage'],['Describe a time you noticed a mistake or something that did not feel right. What did you do?','Integrity'],['Tell us about a time you went beyond what was asked to deliver a better result.','Excellence'],['How do you keep up with business and economic news, and why does it matter in a client-facing firm?','Commercial awareness'],['Tell us about a time you used technology or data to work more efficiently.','Technology']]}};
+ Q:[['Why KPMG, and why this graduate programme?','Motivation'],['Tell us about a time you analysed information to reach a recommendation.','Analysis'],['Describe a time you worked in a team to deliver something under pressure.','Teamwork'],['Tell us about a time you had the courage to challenge a decision or say something difficult.','Courage'],['Describe a time you noticed a mistake or something that did not feel right. What did you do?','Integrity'],['Tell us about a time you went beyond what was asked to deliver a better result.','Excellence'],['How do you keep up with business and economic news, and why does it matter in a client-facing firm?','Commercial awareness'],['Tell us about a time you used technology or data to work more efficiently.','Technology']]},
+bp:{name:'bp',role:'Early Careers · Saville assessments',c:'#2e9a3c',on:'#ffffff',retake:false,
+ note:'Practice approximation of the Saville tests: item counts, timings and screens may differ from your invitation. Match 6.5 is a questionnaire about how you work, so it is not simulated here. Check your own assessment dashboard.',
+ vals:[['Safety','Safety comes first. Stop and report risks.'],['Respect','Treat people fairly and listen.'],['Excellence','Do things well, own mistakes, keep learning.'],['Courage','Speak up and do the right thing when it is hard.'],['One Team','Share, help and work together.']],
+ kw:{Safety:/\b(safety|safe|risk\w*|stopped)\b/i,Respect:/\b(respect\w*|listen\w*|inclusi\w*)\b/i,Excellence:/\b(excellen\w*|quality|learn\w*|improv\w*)\b/i,Courage:/\b(courag\w*|spoke up|speak up|challeng\w*)\b/i,'One Team':/\b(team\w*|together|support\w*|collaborat\w*)\b/i},
+ stages:[['bnum','Swift Global: Numbers','12 number-series questions · 4 min'],['babs','Swift Global: Abstract','12 shape-pattern questions · 4 min'],['brec','Swift Global: Recall','Memorise symbols in a grid · 8 questions'],['bsjt','Situational judgement','8 workplace scenarios · 10 min']],
+ Q:[]}};
 
 /* flag key: [title, tip, severity] */
 const FL={res:['No clear result','End every story with what changed and what you learned.',9],num:['No measurable detail','Add one number per story: time saved, people, percentage, volume.',8],own:['Unclear personal contribution',"Use 'I' for your own actions and 'we' for the team's.",8],rel:['Not answering the question','Answer the exact ask in your first sentence, then support it.',8],val:['Company values not shown','Pick one story per value and show the behaviour, not the slogan.',6],short:['Answer too short','Aim for 90 to 120 seconds, about 150 to 250 words.',6],ref:['No reflection','Add one line: what you would do differently.',5],fill:['Filler words',"Pause silently instead of saying 'um' or 'you know'.",5],hed:['Hedging language',"Replace 'I think maybe' with direct statements.",4],pace:['Pace off target','Aim for 120 to 160 words a minute.',4]};
@@ -609,7 +617,35 @@ const GOOD=[...NEWG,...PSG,...KGEN].filter(g=>{for(let i=0;i<5;i++){try{if(okQ(g
 const GB=[];(function(){const seen=new Set();let i=0;for(let n=0;GB.length<200&&n<6000;n++){const g=GOOD[i++%GOOD.length];try{const x=g();if(okQ(x)){const key=x.q+'|'+x.ans;if(!seen.has(key)){seen.add(key);GB.push(x)}}}catch(e){}}})();
 const QPOOL=[...QB.map(r=>({t:r[4],q:r[0],o:r[1].slice(),ans:r[1][r[2]],why:r[3],tbl:r[5]&&r[5].tbl,svg:r[5]&&r[5].svg})),...GB];
 
+/* ---- bp / Saville Swift Global practice: numbers, abstract, SJT (recall is bRec) ---- */
+const bpSeq=[
+()=>{const s=R(1,5),m=R(2,3),c=R(1,4),a=[s];for(let i=0;i<5;i++)a.push(a[i]*m+c);return[a.slice(0,5),a[5],`Each term is the previous one ×${m} + ${c}.`]},
+()=>{const d=R(1,4),k=R(1,3),a=[R(1,9)];let x=d;for(let i=0;i<5;i++){a.push(a[i]+x);x+=k}return[a.slice(0,5),a[5],`The gaps grow by ${k} each time (${d}, ${d+k}, ${d+2*k}…).`]},
+()=>{const k=R(1,4),a=[R(3,9)];for(let i=0;i<5;i++)a.push(i%2?a[i]-k:a[i]*2);return[a.slice(0,5),a[5],`The rule alternates: ×2, then −${k}.`]},
+()=>{const c=R(1,9),o=R(1,4),a=[];for(let i=0;i<6;i++)a.push((i+o)**2+c);return[a.slice(0,5),a[5],`Square numbers plus ${c}.`]},
+()=>{const a=[R(1,4),R(2,6)];for(let i=0;i<4;i++)a.push(a[i]+a[i+1]);return[a.slice(0,5),a[5],'Each term is the sum of the two before it.']}];
+const bpNum=()=>{const[q,a,why]=pick(bpSeq)();const m=mk(a,[a+1,a-1,a+2,a-2,a+3]);return{t:'Numbers',q:'Find the missing number: '+q.join(', ')+', ?',o:m.o,ans:m.ans,why}};
+const bpFr=(x,y,r,n,f)=>`<g transform="translate(${x},${y})"><polygon points="0,-15 13,11 -13,11" transform="rotate(${r})" fill="${f?'currentColor':'none'}" stroke="currentColor" stroke-width="2"/>${Array.from({length:n},(_,i)=>`<circle cx="${(i-(n-1)/2)*10}" cy="26" r="3" fill="currentColor"/>`).join('')}</g>`;
+const bpAbs=()=>{const dr=pick([45,90,-90,135]),dn=R(0,1),alt=R(0,1),n0=dn?1:R(1,3),f0=R(0,1),P=i=>({r:i*dr,n:n0+i*dn,f:alt?(f0+i)%2:f0});
+ const seq=[0,1,2,3].map(i=>P(i)),c=P(4),w=[{...c,r:c.r+45},{...c,f:1-c.f},{...c,n:c.n+1}],o=shf([c,...w]),L='ABCD';
+ let svg=`<svg viewBox="0 0 360 160" style="width:100%;max-width:380px;color:var(--ink)" role="img" aria-label="Series of four shapes and a missing fifth, with options A to D">`;
+ seq.forEach((p,i)=>svg+=bpFr(36+i*72,32,p.r,p.n,p.f));svg+=`<text x="324" y="40" text-anchor="middle" font-size="26" fill="currentColor">?</text>`;
+ o.forEach((p,j)=>svg+=bpFr(54+j*84,104,p.r,p.n,p.f)+`<text x="${54+j*84}" y="152" text-anchor="middle" font-size="14" fill="currentColor">${L[j]}</text>`);
+ return{t:'Abstract',q:'Which option (A to D) completes the series?',svg:svg+'</svg>',o:L.split(''),ans:L[o.indexOf(c)],why:`Each frame turns ${dr}°${alt?', the shading alternates':''}${dn?' and one dot is added':''}${!alt&&!dn?' while shading and dots stay the same':''}. The next frame follows the same steps.`}};
+const BSJT=[
+['A colleague bypasses a safety interlock on shared equipment to finish faster.','Ask them to stop now, make the area safe and report it to the supervisor.','Raise it at the next team meeting.','Finish your own task and stay out of their way.','Do the same, since it saves everyone time.','Safety is never traded for speed. Act now, then report.','Safety'],
+['You spot a small leak near electrical equipment. Fixing it will delay a delivery.','Stop work in the area, make it safe if you can, report it and explain the delay to your manager.','Put a bucket under it and finish the delivery first.','Tell the next shift to deal with it.','Wait to see whether it gets worse.','A hazard near electrics comes before a deadline, and the delay is communicated openly.','Safety'],
+["A quieter teammate's idea is brushed aside by a senior colleague in a meeting.",'Ask the teammate to expand, point out what is useful, and check in with them afterwards.','Say nothing, to avoid conflict.',"Go straight to the senior colleague's manager.",'Tell the teammate to speak up more next time.','Respect means making space for the idea without escalating or blaming.','Respect'],
+['You find an error in a calculation in a report you sent to your manager yesterday.','Tell your manager now, send the corrected version and explain what changed.','Fix it in the shared file and say nothing.','Wait to see whether anyone notices.','Mention it only if someone asks.','Own mistakes early and visibly. Quiet fixes hide what happened.','Excellence'],
+['You think a risk in an agreed plan has not been raised. Your manager is confident in it.','Share the risk with evidence and suggest a way to test it.','Say nothing, since the decision is made.','Complain to colleagues afterwards.','Quietly do it your own way instead.','Courage means raising it constructively with evidence, not staying silent or going around people.','Courage'],
+['Another team is behind on a shared deliverable, which puts your deadline at risk.','Offer help, agree a joint plan with them and flag the risk to both managers.','Do your part and let them take the blame.','Take over their work without telling anyone.','Escalate to senior leaders before speaking to them.','One Team: talk to them first, share the load and keep managers informed.','One Team'],
+['A supplier offers you a gift above company limits while a contract decision is pending.','Decline politely, explain the policy and record it as required.','Accept it and share it with the team.','Accept it and declare it after the decision.','Keep it but be extra careful to stay fair.','Courage to do the right thing: decline and be transparent.','Courage'],
+['A new joiner is struggling with a system and you have your own workload.','Show them the basics now, agree a time to help properly and tell your manager if it affects your work.','Tell them to read the manual.','Do their tasks quietly for them.','Mention to others that they are slow.','One Team: support them, stay open about capacity and respect their dignity.','One Team']];
 const KT={
+bnum:{name:'Swift Global: Numbers',mins:4,build:()=>Array.from({length:12},bpNum)},
+babs:{name:'Swift Global: Abstract',mins:4,build:()=>Array.from({length:12},bpAbs)},
+brec:{name:'Swift Global: Recall',mins:4,build:()=>[]},
+bsjt:{name:'bp situational judgement',mins:10,build:()=>shf(BSJT).map(mq)},
 kcur:{name:'Current affairs',mins:12,build:()=>shf(CA).slice(0,15).map(mq)},
 kreason:{name:'Numerical and logical reasoning',mins:15,build:()=>[...shf([...QPOOL,...GEN,...KGEN]).slice(0,8).map(x=>typeof x==='function'?x():{...x}),...shf(LOG).slice(0,3).map(mq)]},
 kquant:{name:'Quantitative problem solving',mins:25,build:()=>shf(QPOOL).slice(0,20).map(x=>({...x}))},
@@ -764,7 +800,7 @@ function igCard(g,au){if(!g&&!au)return'<div class="card sm mut">The integrity c
  <p class="mut sm">${g&&g.c==='l'?'Limited check: face tracking was unavailable or your face was rarely in view. ':''}These are signals, not proof. A flag means "worth a look", not "cheated": glancing at notes, a dropped connection or poor light can all trigger one. It is worked out on your device, and your video and audio are never uploaded.</p></div>`}
 const tblh=t=>`<table class="t"><tr>${t[0].map(x=>`<th>${x}</th>`).join('')}</tr>${(Array.isArray(t[1][0])?t[1]:[t[1]]).map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</table>`;
 const stageDone=(k,id)=>id==='vjt'?D.vjt.length>0:id==='odvi'?D.ans.some(a=>a.co===k):KT[id]?D.tests.some(x=>x.id===id):['bart','num','gng'].every(g=>D.games.some(x=>x.g===g));
-const launch=id=>KT[id]?kTest(id):({vjt,odvi,games})[id]();
+const launch=id=>id==='brec'?bRec():KT[id]?kTest(id):({vjt,odvi,games})[id]();
 function start(c){busy=true;keepAwake();if(c)Guard.begin(c)}
 function nextStage(){const n=CO[co].stages.find(s=>!stageDone(co,s[0]));n?needCam(()=>launch(n[0])):show('co')}
 
@@ -789,7 +825,11 @@ async function rpc(fn,body){const r=await fetch(SUPA.url.replace(/\/$/,'')+'/res
 /* Live count: every open tab sends a 'ping' about once a minute; the active_users() SQL function (see live-users.sql) counts distinct visitors seen in the last few minutes. */
 let liveN=null;
 const liveTxt=n=>{n=Math.max(1,n);return n+(n===1?' person':' people')+' practising now'};
-function paintLive(){if(liveN==null)return;const e=$('#au');if(e){e.hidden=false;e.querySelector('.s').textContent=Math.max(1,liveN)+' live';e.querySelector('.x').textContent=liveTxt(liveN);e.title=liveTxt(liveN)}}
+/* Live chip: shown on Home only. It shows for LIVE_SHOW ms, hides, and comes back after LIVE_GAP ms (5 min). */
+const LIVE_SHOW=15000,LIVE_GAP=300000;let liveShownAt=0,liveHideUntil=0;
+function paintLive(){const e=$('#au');if(!e)return;if(liveN==null||!$('#lang')||Date.now()<liveHideUntil){e.hidden=true;return}
+ e.hidden=false;e.querySelector('.s').textContent=Math.max(1,liveN)+' live';e.querySelector('.x').textContent=liveTxt(liveN);e.title=liveTxt(liveN);
+ if(!liveShownAt){liveShownAt=Date.now();setTimeout(()=>{liveHideUntil=Date.now()+LIVE_GAP;const a=$('#au');if(a){a.hidden=true;a.classList.remove('ex')}setTimeout(()=>{liveShownAt=0;liveHideUntil=0;paintLive()},LIVE_GAP)},LIVE_SHOW)}}
 let liveHov=false,liveExT=null;
 function expandLive(){const e=$('#au');if(!e||e.hidden||liveHov)return;e.classList.add('ex');clearTimeout(liveExT);liveExT=setTimeout(()=>{if(!liveHov)e.classList.remove('ex')},R(2500,4500))}
 function schedLive(){setTimeout(()=>{expandLive();schedLive()},R(5000,15000))}
@@ -935,7 +975,9 @@ function home(){const greet=(h=>h<12?'Good morning':h<18?'Good afternoon':'Good 
  <div class="card row sp"><div><b>Speech language</b><div class="mut sm">Used for live transcription of your answers</div></div><select id="lang" aria-label="Speech language">${langs.map(l=>`<option value="${l[0]}" ${D.set.lang===l[0]?'selected':''}>${l[1]}</option>`).join('')}</select></div>
  <div class="card"><b>Your device</b><div class="mut sm">${dev.type==='phone'?'Phone detected: touch-sized controls, front camera, and your screen stays awake while you practise.':dev.type==='tablet'?'Tablet detected: touch controls with a wider layout. Rest it on a stand if you can.':'Laptop or desktop detected: wide video, plus keyboard shortcuts (Space to respond, 1 to 4 to choose, Enter to continue).'}</div></div>
  ${n?'<button class="btn ghost" id="td">See my dashboard →</button>':''}</section>`;
- $$('[data-c]').forEach(e=>e.onclick=()=>{co=e.dataset.c;show('co')});
+ const bpH=t=>{let h=5381;for(const c of String(t).toUpperCase().trim())h=(h*33^c.charCodeAt(0))>>>0;return h};
+ const bpGo=()=>{let u=0;try{u=localStorage.getItem('bpu')==='1'}catch(e){}if(u)return show('co');const v=prompt('bp is locked. Enter the access code:');if(v===null)return;if(bpH(v)===4115231339){try{localStorage.setItem('bpu','1')}catch(e){}show('co')}else alert('Wrong code.')};
+ $$('[data-c]').forEach(e=>e.onclick=()=>{co=e.dataset.c;co==='bp'?bpGo():show('co')});
  $('#lang').onchange=e=>{D.set.lang=e.target.value;save()};if(n)$('#td').onclick=()=>show('dash');paintLive()}
 function coPage(){const c=CO[co],nx=c.stages.findIndex(s=>!stageDone(co,s[0]));
  app.innerHTML=`<section class="stack"><div><button class="btn ghost sm" id="bk">← Back</button></div><div><span class="chip">${c.role}</span><h1 style="margin-top:8px">${c.name}</h1></div>
@@ -943,6 +985,25 @@ function coPage(){const c=CO[co],nx=c.stages.findIndex(s=>!stageDone(co,s[0]));
  <div class="card"><b>What they look for</b>${c.vals.map(v=>`<div class="vrow"><b>${v[0]}</b> <span class="mut sm">${v[1]}</span></div>`).join('')}<p class="mut sm" style="margin-top:12px">Taken from public careers pages and may change. Confirm on the official site.</p></div>
  <div class="card sm mut">${c.note} Your video stays in your browser and is never uploaded.</div></section>`;
  $('#bk').onclick=()=>show('home');$$('[data-s]').forEach(e=>e.onclick=()=>needCam(()=>launch(e.dataset.s)))}
+
+/* ---- bp Swift Global Recall practice: memorise a grid, then recall which symbol was in a cell ---- */
+function bRec(){const me=++alive;cleanup();start('test');pip(true);
+ const SY=['★','●','▲','■','◆','♥','☾','✚','☀'],T0=performance.now();let rd=0,qn=0,ok=0,done=false,cells=[],qs=[],opts=[];
+ const grid=f=>`<div style="display:grid;grid-template-columns:repeat(3,64px);gap:8px;justify-content:center;margin:6px 0">${cells.map(f).join('')}</div>`;
+ const cell=(t,x='')=>`<div class="card ctr" style="font-size:1.7rem;padding:12px 0;${x}">${t}</div>`;
+ function round(){if(rd>=4)return fin();const n=rd<2?6:9,sec=n===6?8:10;cells=shf(SY).slice(0,n);qn=0;qs=shf(cells.map((c,i)=>i)).slice(0,2);
+  app.innerHTML=`<section class="stack"><div class="meta row sp"><span>Round ${rd+1} of 4 · memorise the symbols and their places</span><span class="chip">⏱ <span id="tm">${sec}</span>s</span></div>${barp(rd/4)}<div class="card">${grid(c=>cell(c))}</div></section>`;
+  tick(sec,q,l=>{const e=$('#tm');if(e)e.textContent=l})}
+ function q(){if(me!==alive||done)return;if(qn>=2){rd++;return round()}const i=qs[qn],c=cells[i];opts=shf([c,...shf(SY.filter(x=>x!==c)).slice(0,3)]);
+  app.innerHTML=`<section class="stack"><div class="meta row sp"><span>Round ${rd+1} of 4 · question ${qn+1} of 2</span></div>${barp((rd*2+qn)/8)}<div class="card"><h2 class="q" style="margin:0">Which symbol was in the highlighted cell?</h2>${grid((x,j)=>cell('&nbsp;',j===i?'outline:3px solid var(--ac);background:color-mix(in srgb,var(--ac) 25%,var(--sf))':''))}</div>${opts.map((o,k)=>`<button class="opt" data-k="${k}"><span class="k">${k+1}</span><span style="font-size:1.3rem">${o}</span></button>`).join('')}</section>`;
+  $$('.opt').forEach(b=>b.onclick=()=>pk(+b.dataset.k))}
+ function pk(k){if(done||opts[k]===undefined)return;if(opts[k]===cells[qs[qn]])ok++;qn++;q()}
+ keys(e=>{if(/^[1-4]$/.test(e.key))pk(+e.key-1)});
+ function fin(){if(done)return;done=true;stop();const secs=Math.round((performance.now()-T0)/1000),p=Math.round(ok/8*100),g=Guard.end(),m={ok,n:8,secs,avgMs:0,cats:{Recall:[ok,8]}};
+  D.tests.push({id:'brec',p,m,t:Date.now(),ig:cg(g)});report('test',{id:'brec',p,m,ig:cg(g)});save();busy=false;releaseCam();cleanup();setMood(p);
+  app.innerHTML=`<section class="stack">${cmp('Swift Global: Recall')}<div class="grid c4"><div class="card stat"><b>${p}%</b><span class="mut sm">Score</span></div><div class="card stat"><b>${ok} / 8</b><span class="mut sm">Correct</span></div><div class="card stat"><b>${mmss(secs)}</b><span class="mut sm">Time used</span></div></div><div class="card">${p>=75?'Strong recall.':'Try grouping symbols by row, or make a quick story ("star top left, circle next to it"), and avoid re-checking once the grid is hidden.'}</div>${igCard(g)}<div class="row"><button class="btn" id="s">Next stage</button><button class="btn ghost" id="r">Try again</button><button class="btn ghost" id="d">Dashboard</button></div></section>`;
+  $('#s').onclick=nextStage;$('#r').onclick=()=>needCam(bRec);$('#d').onclick=()=>show('dash')}
+ round()}
 
 /* ---- Shell Virtual Job Try-out ---- */
 function vjt(){const me=++alive;cleanup();start('test');pip(true);
