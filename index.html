@@ -174,6 +174,20 @@ dialog{border:1px solid var(--ln);border-radius:20px;background:var(--sf);color:
 .co[data-c=ret]:hover,.co[data-c=ret]:focus-visible{background:linear-gradient(145deg,#f5c518,#ffd84d);color:#2e1065;border-color:#2e1065}
 .co[data-c=ret]:hover .dot{background:#2e1065;box-shadow:0 0 0 4px rgba(46,16,101,.2)}.co[data-c=ret]:hover .lkb{background:rgba(46,16,101,.12);color:#2e1065}
 body[data-co=ret]{--ac:#5b21b6;--on:#f8d34a}
+/* SEO Africa tile: emerald and gold */
+.co[data-c=seo]{background:linear-gradient(145deg,#064e3b,#0b6e4f 60%,#10936a);color:#f4d77a;border-color:#d4a72c;box-shadow:0 10px 30px rgba(11,110,79,.35),inset 0 1px 0 rgba(255,255,255,.18)}
+.co[data-c=seo] .dot{background:#d4a72c;box-shadow:0 0 0 4px rgba(212,167,44,.25)}
+.co[data-c=seo] .mut{color:#e8dba8}.co[data-c=seo] small.mut{color:#dccf94}
+.co[data-c=seo] .lkb{background:rgba(212,167,44,.2);color:#f4d77a}
+.co[data-c=seo]:hover,.co[data-c=seo]:focus-visible{background:linear-gradient(145deg,#d4a72c,#f0c850);color:#064e3b;border-color:#064e3b}
+.co[data-c=seo]:hover .dot{background:#064e3b;box-shadow:0 0 0 4px rgba(6,78,59,.2)}.co[data-c=seo]:hover .lkb{background:rgba(6,78,59,.12);color:#064e3b}
+body[data-co=seo]{--ac:#0b6e4f;--on:#ffffff}
+.rtg.seo{background:radial-gradient(circle at 50% 30%,rgba(16,147,106,.35),rgba(2,28,21,.82))}
+.rtg.seo .bx{background:linear-gradient(160deg,#064e3b,#0b6e4f);border-color:#d4a72c;color:#f4e3a0}
+.rtg.seo .bx::before{background:linear-gradient(90deg,#10936a,#d4a72c,#fff1a8,#d4a72c,#10936a);background-size:300% 100%}
+.rtg.seo .rm{background:linear-gradient(145deg,#d4a72c,#f4d77a);color:#064e3b}
+.rtg.seo .bt2{color:#fff1a8}.rtg.seo .sub{color:#c9ecdc}
+
 .rtg{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:16px;background:radial-gradient(circle at 50% 30%,rgba(124,58,237,.35),rgba(20,6,45,.8));-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);animation:bpf .25s ease}
 .rtg.out{opacity:0;transition:opacity .22s}
 .rtg .bx{position:relative;overflow:hidden;width:min(94vw,400px);text-align:center;background:linear-gradient(160deg,#241052,#3b1a80);color:#f8e7a6;border:1px solid #f5c518;border-radius:28px;padding:30px 22px 22px;box-shadow:0 28px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.05) inset;animation:bpp .55s cubic-bezier(.2,1.25,.3,1)}
@@ -244,7 +258,14 @@ ret:{name:'RET Practice',role:'Practice question bank · private',c:'#f5c518',on
  note:'Private practice set: 79 questions in verbal, logical, numerical and general knowledge, with answers and explanations after each test, plus an essay stage with rotating prompts (word or character minimums, as in the real test). Essays are stored only on this device.',
  vals:[],kw:{},
  stages:[['rverb','Verbal','20 questions: sentence correction, critical reasoning, reading · 25 min'],['rlog','Logical reasoning','19 questions · 25 min'],['rnum','Numerical reasoning','20 questions · 30 min'],['rgk','General knowledge','20 questions · 20 min'],['ressay','Essay practice','24 rotating prompts: KPMG-style and 2026 trends · live word or character counter · no timer'],['rall','Full mock','All 79 questions · 100 min']],
- Q:[]}};
+ Q:[]},
+seo:{name:'SEO Africa',role:'Immersive Insight Experience · Simulated PE internship',c:'#0b6e4f',on:'#ffffff',retake:false,fixed:true,prep:180,
+ note:'Mirrors the invitation: 2 questions, 3 minutes to read and prepare each, then 2 minutes to answer. Look at the camera lens, not your notes. Both questions are fixed and always asked in this order. Scoring uses general interview habits and the three themes below, which are my assumption of what a finance panel wants, not SEO Africa\u2019s published criteria.',
+ vals:[['Integrity','Raise concerns early, honestly and through the right channel.'],['Analytical rigour','Verify numbers, state assumptions and follow a clear method.'],['Clear communication','Give a structured answer: first, second, finally.']],
+ kw:{Integrity:/\b(integrity|honest\w*|ethic\w*|escalat\w*|transparen\w*|spoke up|flag(ged)?|right channel|chair|manager|senior|pause|defer|postpone)\b/i,'Analytical rigour':/\b(verif\w*|check(ed)?|assumption\w*|wacc|terminal|free cash flow|forecast\w*|sensitiv\w*|discount\w*|model|trace|reconcil\w*|benchmark\w*)\b/i,'Clear communication':/\b(first(ly)?|second(ly)?|third(ly)?|finally|lastly|step|then|next|to summari[sz]e)\b/i},
+ stages:[['odvi','Online video interview','2 questions · 3 min prep · 2 min answer']],
+ Q:[['An investment decision is to be made. At 7pm you find that the financials have been made to look more attractive than they really are. The senior analyst who built the presentation is not around, and calls and SMS are not going through. The meeting is at 9am and the presentation has already been circulated to the committee. What will you do?','Scenario'],['What are the key steps to valuing a company using the Discounted Cash Flow (DCF) model?','Technical']]}
+};
 
 /* flag key: [title, tip, severity] */
 const FL={res:['No clear result','End every story with what changed and what you learned.',9],num:['No measurable detail','Add one number per story: time saved, people, percentage, volume.',8],own:['Unclear personal contribution',"Use 'I' for your own actions and 'we' for the team's.",8],rel:['Not answering the question','Answer the exact ask in your first sentence, then support it.',8],val:['Company values not shown','Pick one story per value and show the behaviour, not the slogan.',6],short:['Answer too short','Aim for 90 to 120 seconds, about 150 to 250 words.',6],ref:['No reflection','Add one line: what you would do differently.',5],fill:['Filler words',"Pause silently instead of saying 'um' or 'you know'.",5],hed:['Hedging language',"Replace 'I think maybe' with direct statements.",4],pace:['Pace off target','Aim for 120 to 160 words a minute.',4]};
@@ -1269,7 +1290,7 @@ function home(){const greet=(h=>h<12?'Good morning':h<18?'Good afternoon':'Good 
  const langs=[['en-NG','English (Nigeria)'],['en-GB','English (UK)'],['en-US','English (US)'],['en-ZA','English (South Africa)'],['en-IN','English (India)'],['en-AU','English (Australia)']];
  const n=D.ans.length+D.vjt.length+D.games.length+D.tests.length;
  app.innerHTML=`<section class="stack"><div><p class="mut">${greet}${D.user.name?', '+esc(D.user.name.split(' ')[0]):''}</p><h1>Practise like it's real.</h1><p class="mut">Pick an employer. Each stage mirrors the real format: camera on, timer running, feedback straight after.</p></div>
- <div class="grid c2">${Object.keys(CO).map(k=>{const c=CO[k],d=c.stages.filter(s=>stageDone(k,s[0])).length;let lk='';if(k==='bp'||k==='ret'){let u=0;try{u=localStorage.getItem(k==='bp'?'bpu':'retu')==='1'}catch(e){}lk=`<span class="lkb">${bpLk(u)}${u?'Unlocked':'Locked'}</span>`}return`<button class="co" data-c="${k}" style="--cc:${c.c};--ct:${c.on}">${lk}<span class="dot"></span><b>${c.name}</b><span>${c.role}</span><small class="mut">${d} of ${c.stages.length} stages practised</small><i class="go">→</i></button>`}).join('')}</div>
+ <div class="grid c2">${Object.keys(CO).map(k=>{const c=CO[k],d=c.stages.filter(s=>stageDone(k,s[0])).length;let lk='';if(k==='bp'||k==='ret'||k==='seo'){let u=0;try{u=localStorage.getItem(k==='bp'?'bpu':k==='ret'?'retu':'seou')==='1'}catch(e){}lk=`<span class="lkb">${bpLk(u)}${u?'Unlocked':'Locked'}</span>`}return`<button class="co" data-c="${k}" style="--cc:${c.c};--ct:${c.on}">${lk}<span class="dot"></span><b>${c.name}</b><span>${c.role}</span><small class="mut">${d} of ${c.stages.length} stages practised</small><i class="go">→</i></button>`}).join('')}</div>
  <div class="card row sp"><div><b>Speech language</b><div class="mut sm">Used for live transcription of your answers</div></div><select id="lang" aria-label="Speech language">${langs.map(l=>`<option value="${l[0]}" ${D.set.lang===l[0]?'selected':''}>${l[1]}</option>`).join('')}</select></div>
  <div class="card"><b>Your device</b><div class="mut sm">${dev.type==='phone'?'Phone detected: touch-sized controls, front camera, and your screen stays awake while you practise.':dev.type==='tablet'?'Tablet detected: touch controls with a wider layout. Rest it on a stand if you can.':'Laptop or desktop detected: wide video, plus keyboard shortcuts (Space to respond, 1 to 4 to choose, Enter to continue).'}</div></div>
  ${n?'<button class="btn ghost" id="td">See my dashboard →</button>':''}</section>`;
@@ -1298,7 +1319,16 @@ function home(){const greet=(h=>h<12?'Good morning':h<18?'Good afternoon':'Good 
   if(H(i.value)===512450851){busy3=true;try{localStorage.setItem('retu','1')}catch(e){}E.textContent='Access granted';w.classList.remove('no');w.classList.add('ok');setTimeout(()=>{w.remove();show('co')},900)}
   else{busy3=true;E.textContent='That password is not right. Try again.';w.classList.remove('no');void w.offsetWidth;w.classList.add('no');setTimeout(()=>{i.value='';busy3=false;i.focus()},700)}};
  i.addEventListener('keydown',e=>{if(e.key==='Enter')go()});w.addEventListener('keydown',e=>{if(e.key==='Escape')close()});$('#rtu').onclick=go;$('#rtx').onclick=close;w.addEventListener('click',e=>{if(e.target===w)close()});i.focus()};
- $$('[data-c]').forEach(e=>e.onclick=()=>{co=e.dataset.c;co==='bp'?bpGo():co==='ret'?retGo():show('co')});
+const seoGo=()=>{let u=0;try{u=localStorage.getItem('seou')==='1'}catch(e){}if(u)return show('co');if($('#rtg'))return;
+ const H=t=>{let h=5381;for(const c of String(t).toUpperCase().trim())h=(h*33^c.charCodeAt(0))>>>0;return h};
+ const w=document.createElement('div');w.id='rtg';w.className='rtg seo';w.setAttribute('role','dialog');w.setAttribute('aria-modal','true');w.setAttribute('aria-label','SEO Africa password');
+ w.innerHTML=`<div class="bx"><div class="rm">SEO</div><b class="bt2">SEO Africa</b><p class="mut sm sub">Enter the password to open this interview practice.</p><input id="rtp" type="password" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Password"><p id="rte" class="sm er" role="alert"></p><div class="row ac"><button class="btn ghost" id="rtx">Cancel</button><button class="btn" id="rtu">Unlock</button></div></div>`;
+ document.body.appendChild(w);const i=$('#rtp'),E=$('#rte');let busy3=false;const close=()=>{w.classList.add('out');setTimeout(()=>w.remove(),230)};
+ const go=()=>{if(busy3)return;if(!i.value.trim()){E.textContent='Type the password.';return}
+  if(H(i.value)===2751211396){busy3=true;try{localStorage.setItem('seou','1')}catch(e){}E.textContent='Access granted';w.classList.remove('no');w.classList.add('ok');setTimeout(()=>{w.remove();show('co')},900)}
+  else{busy3=true;E.textContent='That password is not right. Try again.';w.classList.remove('no');void w.offsetWidth;w.classList.add('no');setTimeout(()=>{i.value='';busy3=false;i.focus()},700)}};
+ i.addEventListener('keydown',e=>{if(e.key==='Enter')go()});w.addEventListener('keydown',e=>{if(e.key==='Escape')close()});$('#rtu').onclick=go;$('#rtx').onclick=close;w.addEventListener('click',e=>{if(e.target===w)close()});i.focus()};
+ $$('[data-c]').forEach(e=>e.onclick=()=>{co=e.dataset.c;co==='bp'?bpGo():co==='ret'?retGo():co==='seo'?seoGo():show('co')});
  $('#lang').onchange=e=>{D.set.lang=e.target.value;save()};if(n)$('#td').onclick=()=>show('dash');paintLive()}
 function coPage(){const c=CO[co],nx=c.stages.findIndex(s=>!stageDone(co,s[0]));
  app.innerHTML=`<section class="stack"><div><button class="btn ghost sm" id="bk">← Back</button></div><div><span class="chip">${c.role}</span><h1 style="margin-top:8px">${c.name}</h1></div>
@@ -1449,7 +1479,7 @@ function kTest(id){const me=++alive;cleanup();start('test');pip(true);const K=KT
 function mime(){return['video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm','video/mp4'].find(x=>window.MediaRecorder&&MediaRecorder.isTypeSupported(x))||''}
 function bitrate(){const t=stream&&stream.getVideoTracks()[0],s=t?t.getSettings():{},h=Math.min(s.width||0,s.height||0);return h>=1080?8e6:h>=720?5e6:2.5e6}
 function odvi(){const c=CO[co],me=++alive;cleanup();start('speak');pip(false);
- const qs=shf(c.Q).slice(0,5),SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+ const qs=c.fixed?c.Q.slice():shf(c.Q).slice(0,5),PT=c.prep||30,SR=window.SpeechRecognition||window.webkitSpeechRecognition;
  let i=0,phase='',rec=null,ch=[],sr=null,want=false,sw=0,sp=false,t0=0,url='',sessionScores=[],sessionAu=[];
  const revoke=()=>{if(url){URL.revokeObjectURL(url);url=''}};
  onClean(()=>{want=false;try{sr&&sr.abort()}catch(e){}try{rec&&rec.state!=='inactive'&&(rec.onstop=null,rec.stop())}catch(e){}revoke()});
@@ -1457,7 +1487,7 @@ function odvi(){const c=CO[co],me=++alive;cleanup();start('speak');pip(false);
  const vid=(r)=>`<div class="vwrap"><video id="cam" autoplay muted playsinline></video>${r?'<span class="recdot">REC</span>':''}</div>`;
  const attach=()=>{$('#cam').srcObject=stream;$('#qual').textContent=quality()};
  function prep(){if(me!==alive)return;Guard.lap();revoke();phase='prep';sp=false;sw=0;
-  app.innerHTML=`<section class="stack">${head()}<div class="card"><div class="row sp"><span class="mut">Preparation time</span><span class="big" id="tm">0:30</span></div>${vid()}<div class="row"><button class="btn" id="go">Start answering</button><span class="mut sm"><span class="keyOnly">or press Space</span></span></div></div></section>`;attach();$('#go').onclick=ans;tick(30,ans,upd,[10])}
+  app.innerHTML=`<section class="stack">${head()}<div class="card"><div class="row sp"><span class="mut">Preparation time</span><span class="big" id="tm">${Math.floor(PT/60)}:${String(PT%60).padStart(2,'0')}</span></div>${vid()}<div class="row"><button class="btn" id="go">Start answering</button><span class="mut sm"><span class="keyOnly">or press Space</span></span></div></div></section>`;attach();$('#go').onclick=ans;tick(PT,ans,upd,[30,10])}
  function ans(){if(me!==alive||phase!=='prep')return;phase='ans';stop();t0=performance.now();ch=[];
   try{const mt=mime();rec=new MediaRecorder(stream,{...(mt?{mimeType:mt}:{}),videoBitsPerSecond:bitrate(),audioBitsPerSecond:128000});rec.ondataavailable=e=>e.data.size&&ch.push(e.data);rec.start(1000)}catch(e){rec=null}
   app.innerHTML=`<section class="stack">${head()}<div class="card"><div class="row sp"><span class="mut">Answer</span><span class="big" id="tm">2:00</span></div>${vid(true)}<textarea id="tx" aria-label="Transcript" placeholder="${SR?'Your words appear here as you speak. You can edit them before finishing.':'Live transcription is not available in this browser. Type your key points here (optional); scores use only what is written.'}"></textarea><p class="mut sm" id="nt" role="status"></p><button class="btn" id="fin" style="margin-top:10px">Finish answer</button></div></section>`;attach();
