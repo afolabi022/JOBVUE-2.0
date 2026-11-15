@@ -111,6 +111,17 @@ button:focus-visible,select:focus-visible,[tabindex]:focus-visible,summary:focus
 .stg:hover{border-color:var(--ac);transform:translateY(-1px)}.stg.next{border-color:var(--ac);box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 25%,transparent)}
 .stg .num{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:500;background:var(--ln);flex:none}.stg.done .num{background:var(--ok);color:var(--on-ok)}.stg.next .num{background:var(--ac);color:var(--on)}.stg i{margin-left:auto;font-style:normal;font-weight:600;white-space:nowrap}
 .rmodes{display:flex;flex-wrap:wrap;gap:8px;margin:-8px 0 0 70px}@media(max-width:560px){.rmodes{margin-left:0}}
+.rmode{display:inline-flex;flex-direction:column;gap:2px;align-items:flex-start;text-align:left;border:1px solid var(--ln);border-radius:12px;padding:8px 13px;background:var(--sf);color:var(--ink);font:inherit;cursor:pointer;transition:border-color .18s,transform .18s,box-shadow .18s,background .18s}
+.rmode:hover{border-color:var(--ac);transform:translateY(-1px)}
+.rmode:focus-visible{outline:none;border-color:var(--ac);box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 22%,transparent)}
+.rmode .rn{font-weight:600;font-size:.9rem;line-height:1.25;display:flex;align-items:center;gap:7px}
+.rmode .rs{font-size:.72rem;color:var(--mut);letter-spacing:.01em}
+.rmode .rl{font-size:.72rem;color:var(--ac);font-weight:600;margin-top:1px}
+.rmode .lv{display:inline-flex;gap:2px}
+.rmode .lv b{width:4px;height:4px;border-radius:50%;background:var(--ln)}
+.rmode .lv b.on{background:var(--ac)}
+.rmode.hard{border-color:color-mix(in srgb,var(--ac) 42%,var(--ln));background:color-mix(in srgb,var(--ac) 6%,var(--sf))}
+.rmode.hard:hover{background:color-mix(in srgb,var(--ac) 11%,var(--sf))}
 .opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;border:1.5px solid var(--ln);border-radius:16px;padding:14px 16px;margin:0;font:inherit;background:var(--sf);color:var(--ink);cursor:pointer;min-height:52px;transition:border-color .2s,background .2s,transform .15s}
 .opt:hover:not(:disabled){border-color:var(--ac);transform:translateX(2px)}.opt:disabled{cursor:default}
 .opt .k{flex:none;width:24px;height:24px;border-radius:7px;background:var(--ln);display:grid;place-items:center;font-size:.75rem;font-weight:700}
@@ -1193,7 +1204,7 @@ const RET_MIN=5,RET_MAX=600,RET_FZ_N=25,RET_FZ_MIN=15;
 function retFullMins(){let v=0;try{v=Math.round(+D.set.retMins||0)}catch(e){}return v>=RET_MIN&&v<=RET_MAX?v:RTM.ALL}
 const hm=m=>m<60?m+' min':Math.floor(m/60)+' h'+(m%60?' '+m%60+' min':'');
 Object.defineProperty(CO.ret,'stages',{configurable:true,get(){return[['rverb','Verbal',`${RETN.V} questions: sentence correction, critical reasoning, passages, vocabulary · ${hm(RTM.V)}`],['rlog','Logical reasoning',`${RETN.L} questions: arguments and logic puzzles · ${hm(RTM.L)}`],['rnum','Numerical reasoning',`${RETN.N} questions, including tables and data sufficiency · ${hm(RTM.N)}`],['rgk','General knowledge',`${RETN.G} questions · ${hm(RTM.G)}`],['ressay','Essay practice',`${ESS.length} rotating prompts: KPMG-style, past papers and 2026 trends · live word or character counter · no timer`],['rall','Full mock',`All ${RET.length} questions · ${hm(retFullMins())} (change the time below)`]]}});
-CO.ret.note=`Private practice set: ${RET.length} questions (${RETN.V} verbal, ${RETN.L} logical, ${RETN.N} numerical, ${RETN.G} general knowledge) from KPMG past papers, with answers and explanations after each test, a Shuffled mode on every tab and the full mock, a ⚡ Frenzy of ${RET_FZ_N} random questions in ${RET_FZ_MIN} minutes on each tab (no repeats until you have seen the whole tab), a 🔥 Super Frenzy of ${RET_FZ_N} twisted questions per tab (new numbers, questions asked the other way round and fresh puzzles on the same topics, made new every time), plus an essay stage with ${ESS.length} rotating prompts (word or character minimums, as in the real test). Some questions carry a reading note where a photo was unclear or an answer key was corrected. Essays are stored only on this device.`;
+CO.ret.note=`Private practice set: ${RET.length} questions (${RETN.V} verbal, ${RETN.L} logical, ${RETN.N} numerical, ${RETN.G} general knowledge) from KPMG past papers, with answers and explanations after each test, a Shuffled mode on every tab and the full mock, a Frenzy mode of ${RET_FZ_N} random questions in ${RET_FZ_MIN} minutes on each tab (no repeats until you have seen the whole tab), a Super Frenzy of ${RET_FZ_N} twisted questions per tab (new numbers, questions asked the other way round and fresh puzzles on the same topics, made new every time), plus an essay stage with ${ESS.length} rotating prompts (word or character minimums, as in the real test). Some questions carry a reading note where a photo was unclear or an answer key was corrected. Essays are stored only on this device.`;
 /* ---- RET Super Frenzy: twisted questions generated from the bank's topics ----
    Every question is built fresh: new numbers, a different unknown, the question asked the other way round,
    or a new puzzle that is solved by checking every possibility, so the key is always right. */
@@ -1486,7 +1497,14 @@ function retFrenzy(s){const rows=RET.filter(r=>r[0]===s),qs=retQ(s),keys=rows.ma
 const rLast=id=>{const h=(D.tests||[]).filter(x=>x.id===id);return h.length?h[h.length-1].m:null};
 function retModes(id){const s={rverb:'V',rlog:'L',rnum:'N',rgk:'G'}[id];if(!s&&id!=='rall')return'';
  const ls=rLast(id+'S'),lf=s&&rLast(id+'F'),lx=s&&rLast(id+'X');
- return`<div class="rmodes"><button class="btn ghost sm" data-rx="${id}S" aria-label="Shuffled ${s?RETX[s]:'full mock'}: all questions in a random order">Shuffled${ls?` <span class="mut">· last ${ls.ok}/${ls.n}</span>`:''}</button>${s?`<button class="btn ghost sm" data-rx="${id}F" aria-label="${RETX[s]} frenzy: ${RET_FZ_N} random questions in ${RET_FZ_MIN} minutes">⚡ Frenzy · ${RET_FZ_N} random · ${RET_FZ_MIN} min${lf?` <span class="mut">· last ${lf.ok}/${lf.n}</span>`:''}</button><button class="btn ghost sm" data-rx="${id}X" aria-label="${RETX[s]} super frenzy: ${RET_FZ_N} twisted questions in ${RET_FZ_MIN} minutes">🔥 Super Frenzy · ${RET_FZ_N} twisted · ${RET_FZ_MIN} min${lx?` <span class="mut">· last ${lx.ok}/${lx.n}</span>`:''}</button>`:''}</div>`}
+ const lv=n=>`<span class="lv" aria-hidden="true">${[1,2,3].map(k=>`<b class="${k<=n?'on':''}"></b>`).join('')}</span>`;
+ const last=m=>m?`<span class="rl">Last ${m.ok}/${m.n}</span>`:'';
+ const btn=(sfx,cls,lvl,name,sub,m,aria)=>`<button class="rmode ${cls}" data-rx="${id}${sfx}" aria-label="${aria}"><span class="rn">${lv(lvl)}${name}</span><span class="rs">${sub}</span>${last(m)}</button>`;
+ return`<div class="rmodes">`
+  +btn('S','',1,'Shuffled',s?'All questions · random order':'Full mock · random order',ls,`Shuffled ${s?RETX[s]:'full mock'}: all questions in a random order`)
+  +(s?btn('F','',2,'Frenzy',`${RET_FZ_N} random · ${RET_FZ_MIN} min`,lf,`${RETX[s]} frenzy: ${RET_FZ_N} random questions in ${RET_FZ_MIN} minutes`)
+     +btn('X','hard',3,'Super Frenzy',`${RET_FZ_N} twisted · ${RET_FZ_MIN} min`,lx,`${RETX[s]} super frenzy: ${RET_FZ_N} twisted questions in ${RET_FZ_MIN} minutes`):'')
+  +`</div>`}
 
 const KT={
 bsg:{name:'Swift Global (recall, numbers, abstract)',mins:12,build:()=>[]},
